@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Poshmark 注册工具</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;background:#f0f4f8;color:#1e293b;font-size:14px;min-height:100vh}
+.header{background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;padding:20px 28px;box-shadow:0 2px 8px rgba(79,70,229,.3)}
+.header h1{font-size:20px;font-weight:700}
+.header p{font-size:12px;opacity:.85;margin-top:4px}
+.container{max-width:900px;margin:0 auto;padding:24px}
+.card{background:#fff;border-radius:12px;padding:20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card h2{font-size:14px;color:#64748b;font-weight:600;margin-bottom:14px;letter-spacing:.3px}
+.upload-area{border:2px dashed #cbd5e1;border-radius:10px;padding:32px;text-align:center;cursor:pointer;transition:all .2s}
+.upload-area:hover{border-color:#4F46E5;background:#f5f3ff}
+.upload-area.active{border-color:#059669;background:#ecfdf5}
+.upload-area .icon{font-size:36px;margin-bottom:8px}
+.upload-area .text{font-size:14px;color:#475569}
+.upload-area .hint{font-size:12px;color:#94a3b8;margin-top:4px}
+#fileInput{display:none}
+.file-info{margin-top:12px;padding:10px 14px;background:#f8fafc;border-radius:8px;font-size:13px;color:#334155;display:none}
+.file-info.show{display:block}
+.btn{border:0;border-radius:8px;padding:11px 22px;cursor:pointer;font-size:14px;font-weight:600;transition:all .15s}
+.btn:hover{filter:brightness(1.05);transform:translateY(-1px)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-primary{background:linear-gradient(135deg,#4F46E5,#4338ca);color:#fff;box-shadow:0 2px 8px rgba(79,70,229,.3)}
+.btn-danger{background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff;box-shadow:0 2px 8px rgba(220,38,38,.3)}
+.btn-secondary{background:#fff;color:#334155;border:1px solid #cbd5e1}
+.actions{display:flex;gap:10px;margin-top:16px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.stat{background:#fff;border-radius:10px;padding:16px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.stat .num{font-size:28px;font-weight:800;letter-spacing:-.5px}
+.stat .label{font-size:11px;color:#64748b;margin-top:4px;font-weight:600}
+.stat.total .num{color:#1e293b}
+.stat.ok .num{color:#059669}
+.stat.fail .num{color:#dc2626}
+.stat.run .num{color:#d97706}
+.log-box{background:#0f172a;color:#e2e8f0;border-radius:10px;padding:14px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px;line-height:1.6;height:280px;overflow-y:auto;white-space:pre-wrap}
+.status-bar{padding:10px 14px;border-radius:8px;font-size:13px;margin-top:12px;display:none}
+.status-bar.show{display:block}
+.status-bar.running{background:#fef3c7;color:#92400e;border:1px solid #fde68a}
+.status-bar.done{background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0}
+.status-bar.error{background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
+.empty-hint{text-align:center;padding:40px;color:#94a3b8;font-size:13px}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📱 Poshmark 批量注册工具</h1>
+  <p>上传 Excel → 自动跑注册流程 → 实时查看进度</p>
+</div>
+
+<div class="container">
+
+  <!-- 上传 Excel -->
+  <div class="card">
+    <h2>📂 上传 Excel 文件</h2>
+    <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+      <div class="icon">📄</div>
+      <div class="text">点击选择 Excel 文件</div>
+      <div class="hint">格式：.xls / .xlsx / .csv</div>
+    </div>
+    <input type="file" id="fileInput" accept=".xls,.xlsx,.csv" onchange="handleFile(this)">
+    <div class="file-info" id="fileInfo"></div>
+  </div>
+
+  <!-- 统计 -->
+  <div class="stats">
+    <div class="stat total"><div class="num" id="stTotal">—</div><div class="label">总行数</div></div>
+    <div class="stat ok"><div class="num" id="stOk">—</div><div class="label">✅ 成功</div></div>
+    <div class="stat fail"><div class="num" id="stFail">—</div><div class="label">❌ 失败</div></div>
+    <div class="stat run"><div class="num" id="stRun">—</div><div class="label">⏳ 运行中</div></div>
+  </div>
+
+  <!-- 操作按钮 -->
+  <div class="card">
+    <h2>▶ 开始注册</h2>
+    <div class="actions">
+      <button class="btn btn-primary" id="startBtn" onclick="startBatch()" disabled>开始批量注册</button>
+      <button class="btn btn-danger" id="stopBtn" onclick="stopBatch()" disabled>停止</button>
+    </div>
+    <div class="status-bar" id="statusBar"></div>
+  </div>
+
+  <!-- 日志 -->
+  <div class="card">
+    <h2>📋 运行日志</h2>
+    <div class="log-box" id="logBox">等待开始...</div>
+  </div>
+
+</div>
+
+<script>
+let excelPath = '';
+let pollTimer = null;
+
+function $(id){return document.getElementById(id)}
+
+async function handleFile(input){
+  const file = input.files[0];
+  if(!file) return;
+  const fd = new FormData();
+  fd.append('file', file);
+  try{
+    const r = await fetch('/api/upload/excel', {method:'POST', body:fd});
+    const j = await r.json();
+    if(j.success){
+      excelPath = j.path;
+      $('fileInfo').innerHTML = '✅ 已上传：<b>'+j.name+'</b>';
+      $('fileInfo').classList.add('show');
+      $('uploadArea').classList.add('active');
+      $('startBtn').disabled = false;
+      loadRows();
+    }else{
+      alert('上传失败：'+(j.error||'未知错误'));
+    }
+  }catch(e){
+    alert('上传失败：'+e.message);
+  }
+}
+
+async function loadRows(){
+  try{
+    const r = await fetch('/api/workflow/excel-rows?excelPath='+encodeURIComponent(excelPath));
+    const j = await r.json();
+    if(j.rows){
+      $('stTotal').textContent = j.rows.length;
+      let ok=0, fail=0;
+      j.rows.forEach(row=>{
+        const status = (row.status||'').toLowerCase();
+        if(status.includes('成功')||status.includes('注册成功')) ok++;
+        else if(status.includes('失败')||status.includes('未找到')||status.includes('错误')) fail++;
+      });
+      $('stOk').textContent = ok;
+      $('stFail').textContent = fail;
+      $('stRun').textContent = 0;
+    }
+  }catch(e){console.warn('加载行数据失败',e)}
+}
+
+async function startBatch(){
+  if(!excelPath){alert('请先上传 Excel 文件');return}
+  $('startBtn').disabled = true;
+  $('stopBtn').disabled = false;
+  $('statusBar').className = 'status-bar show running';
+  $('statusBar').textContent = '⏳ 批量注册进行中...';
+  $('logBox').textContent = '';
+  try{
+    const r = await fetch('/api/workflow/batch-register', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({excelPath: excelPath, flow:'22', continueOnError:true})
+    });
+    const j = await r.json();
+    if(j.started){
+      log('✅ 批量注册已启动，流程：22');
+      pollTimer = setInterval(pollStatus, 2000);
+    }else{
+      throw new Error(j.error||'启动失败');
+    }
+  }catch(e){
+    log('❌ 启动失败：'+e.message);
+    $('statusBar').className = 'status-bar show error';
+    $('statusBar').textContent = '❌ '+e.message;
+    resetButtons();
+  }
+}
+
+async function stopBatch(){
+  try{
+    await fetch('/api/workflow/batch-register/stop', {method:'POST'});
+    log('⏹ 已发送停止指令');
+  }catch(e){console.warn(e)}
+}
+
+async function pollStatus(){
+  try{
+    const r = await fetch('/api/workflow/batch-register/status');
+    const j = await r.json();
+    if(j.output){
+      $('logBox').textContent = j.output.slice(-3000);
+      $('logBox').scrollTop = $('logBox').scrollHeight;
+    }
+    if(!j.running){
+      clearInterval(pollTimer);
+      pollTimer = null;
+      $('statusBar').className = 'status-bar show done';
+      $('statusBar').textContent = '✅ 批量注册已完成';
+      log('✅ 全部完成');
+      resetButtons();
+      loadRows();
+    }
+  }catch(e){console.warn(e)}
+}
+
+function log(msg){
+  $('logBox').textContent += (msg+'\n');
+  $('logBox').scrollTop = $('logBox').scrollHeight;
+}
+
+function resetButtons(){
+  $('startBtn').disabled = false;
+  $('stopBtn').disabled = true;
+}
+
+// 自动刷新已上传文件列表
+async function initUploads(){
+  try{
+    const r = await fetch('/api/upload/list');
+    const j = await r.json();
+    if(j.files && j.files.length>0){
+      // 自动选最新的
+      const f = j.files[0];
+      excelPath = f.path;
+      $('fileInfo').innerHTML = '📂 已加载上次文件：<b>'+f.name+'</b>';
+      $('fileInfo').classList.add('show');
+      $('uploadArea').classList.add('active');
+      $('startBtn').disabled = false;
+      loadRows();
+    }
+  }catch(e){console.warn(e)}
+}
+initUploads();
+</script>
+</body>
+</html>

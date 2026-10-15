@@ -1,0 +1,44 @@
+server:
+  port: 8081
+
+spring:
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+# 本地 OCR：默认调用系统中的 tesseract 命令。
+# macOS: brew install tesseract tesseract-lang
+# Windows: 安装 Tesseract 后，将 command 改成实际 tesseract.exe 路径。
+automation:
+  # 默认镜像（投屏）识别区域，后端启动时加载；运行时仍可通过 /api/mirror/region 临时修改
+  mirror:
+    x: 1175
+    y: 59
+    width: 711
+    height: 1021
+  crypto:
+    master-key: change-me-to-a-strong-local-key
+  ocr:
+    # OCR 引擎：tesseract（本机）| baidu（百度智能云在线）| paddleocr（本地 PaddleOCR 服务）
+    engine: paddleocr
+    # 其他电脑安装路径不同时，可用 --automation.ocr.tesseract-command="D:\xxx\tesseract.exe" 覆盖
+    tesseract-command: 'C:\Program Files\Tesseract-OCR\tesseract.exe'
+    language: chi_sim+eng
+    # psm 11（稀疏文本）：适合投屏画面散落的 UI 文字；psm 6 对白色小字识别率极差
+    psm: 11
+    timeout-ms: 15000
+    # 百度智能云在线 OCR（engine=baidu 时生效）
+    # 开通地址：https://console.bce.baidu.com/ai/#/ai/ocr/overview/index
+    # 免费额度：个人认证 1,000 次/月（控制台“免费资源领取页”领取）
+    baidu:
+      api-key: 'I5B4U7WI7NsbMe65M8u7gidt'
+      secret-key: 'oHejK6LWT2QajKYLYN7EZEePVKJ1mUOu'
+      token-url: https://aip.baidubce.com/oauth/2.0/token
+      endpoint: https://aip.baidubce.com/rest/2.0/ocr/v1/general
+    # 本地 PaddleOCR 服务（engine=paddleocr 时生效）
+    paddle:
+      url: http://127.0.0.1:8080/ocr
+  # 图标模板目录（ICON 步骤用）：控制台“⑧ 图标模板”上传的 PNG 存这里
+  templates-dir: templates

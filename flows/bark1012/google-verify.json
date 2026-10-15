@@ -1,0 +1,13 @@
+{
+  "name": "google-verify",
+  "description": "谷歌账号注册收尾：输入验证码（来自接码地址）→ 提交 → 登录成功进入 YouTube 主页",
+  "steps": [
+    { "stepOrder": 1, "actionType": "WAIT", "targetType": "TEXT", "targetValue": null, "retryCount": 3, "timeout": 1000, "x": null, "y": null, "config": {} },
+    { "stepOrder": 2, "actionType": "CLICK", "targetType": "TEXT", "targetValue": "Enter code", "retryCount": 3, "timeout": 1000, "x": null, "y": null, "config": { "onFail": "next" } },
+    { "stepOrder": 3, "actionType": "INPUT", "targetType": "TEXT", "targetValue": "${SMS_CODE}", "retryCount": 3, "timeout": 1000, "x": null, "y": null, "config": {} },
+    { "stepOrder": 4, "actionType": "WAIT", "targetType": "TEXT", "targetValue": null, "retryCount": 3, "timeout": 1500, "x": null, "y": null, "config": {} },
+    { "stepOrder": 5, "actionType": "CLICK", "targetType": "TEXT", "targetValue": "Next", "retryCount": 5, "timeout": 1000, "x": null, "y": null, "config": { "onFail": "next" } },
+    { "stepOrder": 6, "actionType": "WAIT", "targetType": "TEXT", "targetValue": null, "retryCount": 3, "timeout": 8000, "x": null, "y": null, "config": {} },
+    { "stepOrder": 7, "actionType": "CHECK", "targetType": "TEXT", "targetValue": "Home", "retryCount": 8, "timeout": 1000, "x": null, "y": null, "config": { "expect": "present", "keywords": ["Home", "首页", "Subscriptions", "订阅", "Shorts"], "onSuccess": "stop" } }
+  ]
+}

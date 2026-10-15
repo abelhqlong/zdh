@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iPhone Simulator — 小火箭+AMG一键新机 → 抹除 → Apple登录 → Poshmark</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-user-select:none; user-select:none; }
+  html,body { width:100%; height:100%; background:#0b0b0f; font-family:-apple-system,'SF Pro Text','Segoe UI',Roboto,'PingFang SC',sans-serif; overflow:hidden; }
+
+  /* 舞台：585x1266，等比缩放居中 */
+  #stage {
+    position:absolute; left:50%; top:50%;
+    width:585px; height:1266px;
+    transform:translate(-50%,-50%) scale(1);
+    transform-origin:center center;
+    background:#F2F2F7; overflow:hidden;
+    box-shadow:0 0 60px rgba(0,0,0,.8);
+  }
+
+  .screen { position:absolute; inset:0; display:none; flex-direction:column; background:#F2F2F7; }
+  .screen.active { display:flex; }
+
+  .statusbar { height:44px; flex:none; display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px; font-size:15px; font-weight:600; color:#000; }
+  .nav { height:44px; flex:none; display:flex; align-items:center; justify-content:center; position:relative; border-bottom:.5px solid rgba(0,0,0,.12); background:rgba(249,249,249,.94); }
+  .nav .title { font-size:17px; font-weight:600; }
+  .nav .back { position:absolute; left:12px; font-size:16px; color:#007AFF; cursor:pointer; }
+  .nav .skip { position:absolute; right:12px; font-size:16px; color:#007AFF; cursor:pointer; }
+  .body { flex:1; position:relative; overflow-y:auto; }
+
+  .group { background:#fff; border-radius:14px; margin:10px 16px; overflow:hidden; flex:none; }
+  .row { display:flex; align-items:center; min-height:46px; padding:6px 16px; border-bottom:.5px solid rgba(0,0,0,.08); font-size:16px; color:#000; cursor:pointer; }
+  .row:last-child { border-bottom:none; }
+  .row .chev { margin-left:auto; color:#C7C7CC; font-size:15px; padding-left:10px; }
+  .row.selected { color:#007AFF; font-weight:600; }
+  .row .sub2 { margin-left:auto; color:#8E8E93; font-size:13px; padding-left:10px; }
+
+  .field { margin:14px 20px; background:#fff; border-radius:12px; padding:0 14px; border:1px solid rgba(0,0,0,.1); cursor:text; }
+  .field .label { font-size:13px; font-weight:600; color:#5A5A60; padding-top:6px; }
+  .field input { width:100%; border:none; outline:none; background:transparent; font-size:17px; padding:4px 0 10px; color:#000; font-family:inherit; -webkit-user-select:text; user-select:text; }
+
+  .btn { display:block; text-align:center; font-size:18px; font-weight:600; padding:13px 0; cursor:pointer; }
+  .btn.primary { color:#007AFF; }
+
+  .title-text { padding:30px 20px 10px; text-align:center; }
+  .title-text .t { font-size:24px; font-weight:700; }
+  .title-text .s { font-size:14px; color:#6B7280; margin-top:6px; line-height:1.5; }
+
+  /* 弹窗 */
+  .overlay { position:absolute; inset:0; background:rgba(22,22,25,.92); display:none; align-items:flex-end; justify-content:center; z-index:50; }
+  .overlay.active { display:flex; }
+  .alert { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:82%; background:#f6f6f6; border-radius:14px; padding:18px; text-align:center; }
+  .alert .a-title { font-size:17px; font-weight:600; color:#000; }
+  .alert .a-msg { font-size:13.5px; color:#6B7280; margin-top:8px; line-height:1.5; }
+  .alert .btns { margin-top:16px; display:flex; flex-direction:column; gap:0; border-top:.5px solid rgba(0,0,0,.12); }
+  .alert .btns .btn { border-bottom:.5px solid rgba(0,0,0,.08); }
+  .alert .btns .btn:last-child { border-bottom:none; }
+
+  /* 桌面 */
+  #home { background:linear-gradient(160deg,#1a2740 0%,#0d1526 60%,#0b0b0f 100%); }
+  .appgrid { display:flex; flex-wrap:wrap; gap:26px 20px; padding:70px 34px 10px; }
+  .app { width:104px; text-align:center; cursor:pointer; }
+  .app .ico { width:88px; height:88px; border-radius:20px; margin:0 auto; display:flex; align-items:center; justify-content:center; font-size:38px; }
+  .app .nm { margin-top:7px; font-size:17px; color:#fff; text-shadow:0 1px 3px rgba(0,0,0,.6); }
+  .dock { position:absolute; left:0; right:0; bottom:34px; display:flex; justify-content:center; gap:22px; }
+
+  .vpn-banner { margin:8px 16px 0; background:#34C759; color:#fff; border-radius:10px; padding:9px 14px; font-size:16px; font-weight:700; text-align:center; flex:none; }
+  .acc-card { margin:10px 16px 4px; background:linear-gradient(135deg,#7DB9F7,#3E7DC7); border-radius:14px; padding:16px 18px; color:#fff; cursor:pointer; flex:none; }
+  .acc-card .t1 { font-size:17px; font-weight:600; }
+  .acc-card .t2 { font-size:15px; opacity:.9; margin-top:4px; word-break:break-all; }
+
+  .hero { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; padding:0 40px; text-align:center; }
+  .hero .logo { font-size:64px; }
+  .hero .hi { font-size:44px; font-weight:700; color:#000; }
+  .hero .sub { font-size:16px; color:#6B7280; line-height:1.5; }
+
+  /* 加载动画 */
+  .spinner { width:64px; height:64px; border:6px solid rgba(0,0,0,.15); border-top-color:#007AFF; border-radius:50%; animation:spin 1s linear infinite; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  #amg-working .hero { gap:26px; }
+  .progress { width:200px; height:8px; background:rgba(0,0,0,.12); border-radius:4px; overflow:hidden; }
+  .progress > div { height:100%; width:0; background:#007AFF; animation:grow 2.4s ease forwards; }
+  @keyframes grow { to { width:100%; } }
+
+  /* Shadowrocket 节点 */
+  #shadowrocket .body { background:#F2F2F7; }
+  #sr-nodes .row { padding-left:30px; font-size:15px; }
+  #sr-nodes .row.selected { background:rgba(0,122,255,.08); }
+  .tag { font-size:11px; color:#34C759; border:1px solid #34C759; border-radius:4px; padding:1px 5px; margin-left:8px; }
+  .route-bar { position:absolute; left:0; right:0; bottom:0; background:rgba(249,249,249,.97); border-top:.5px solid rgba(0,0,0,.12); padding:10px 16px; font-size:14px; display:flex; align-items:center; gap:8px; }
+  .route-bar b { color:#007AFF; }
+  .sw { width:46px; height:27px; border-radius:14px; background:#E5E5EA; position:relative; transition:background .2s; margin-left:auto; flex:none; }
+  .sw::after { content:''; position:absolute; top:2px; left:2px; width:23px; height:23px; border-radius:50%; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.3); transition:left .2s; }
+  .sw.on { background:#34C759; }
+  .sw.on::after { left:21px; }
+
+  .brand { font-size:26px; font-weight:800; color:#DC2626; letter-spacing:.5px; }
+  .tabbar { height:64px; flex:none; background:rgba(249,249,249,.96); border-top:.5px solid rgba(0,0,0,.12); display:flex; align-items:center; justify-content:space-around; font-size:12px; color:#8E8E93; }
+
+  #calib { position:fixed; right:8px; bottom:8px; background:rgba(0,0,0,.75); color:#4ADE80; font:11px/1.5 monospace; padding:6px 8px; border-radius:6px; z-index:999; white-space:pre; max-width:70vw; cursor:pointer; }
+  #hint { position:fixed; left:8px; bottom:8px; background:rgba(0,0,0,.75); color:#93C5FD; font:11px/1.5 monospace; padding:6px 8px; border-radius:6px; z-index:999; }
+</style>
+</head>
+<body>
+
+<div id="stage">
+
+  <!-- ============ 1. 桌面（状态栏含 VPN 图标） ============ -->
+  <div class="screen active" id="home">
+    <div class="statusbar">9:41</div>
+    <div class="vpn-banner" id="vpn-banner" style="display:none;">VPN 已连接</div>
+    <div class="appgrid">
+      <div class="app" data-go="settings"><div class="ico" style="background:linear-gradient(135deg,#8E8E93,#636366);">⚙</div><div class="nm">Settings</div></div>
+      <div class="app" data-go="poshmark"><div class="ico" style="background:linear-gradient(135deg,#DC2626,#991B1B);">👗</div><div class="nm">Poshmark</div></div>
+      <div class="app" data-go="shadowrocket"><div class="ico" style="background:linear-gradient(135deg,#111827,#374151);">🚀</div><div class="nm">Shadowrocket</div></div>
+      <div class="app" data-go="settings"><div class="ico" style="background:linear-gradient(135deg,#007AFF,#0055C7);">🌐</div><div class="nm">Safari</div></div>
+      <div class="app"><div class="ico" style="background:linear-gradient(135deg,#34C759,#1FAE4B);">💬</div><div class="nm">Messages</div></div>
+      <div class="app"><div class="ico" style="background:linear-gradient(135deg,#FF2D55,#C7003A);">📷</div><div class="nm">Camera</div></div>
+      <div class="app"><div class="ico" style="background:linear-gradient(135deg,#5856D6,#3E3DB8);">🖼</div><div class="nm">Photos</div></div>
+      <div class="app"><div class="ico" style="background:linear-gradient(135deg,#FF9500,#E88A00);">🎵</div><div class="nm">Music</div></div>
+    </div>
+    <div class="dock">
+      <div class="app"><div class="ico" style="background:linear-gradient(135deg,#34C759,#1FAE4B);">📞</div><div class="nm">Phone</div></div>
+      <div class="app"><div class="ico" style="background:linear-gradient(135deg,#FF9500,#E88A00);">🌐</div><div class="nm">Safari</div></div>
+      <div class="app"><div class="ico" style="background:linear-gradient(135deg,#8E8E93,#636366);">💬</div><div class="nm">Messages</div></div>
+      <div class="app" data-go="amg"><div class="ico" style="background:linear-gradient(135deg,#7C3AED,#4C1D95);">🔄</div><div class="nm">amg</div></div>
+    </div>
+  </div>
+
+  <!-- ============ 2. Shadowrocket 主页（订阅节点列表） ============ -->
+  <div class="screen" id="shadowrocket">
+    <div class="statusbar">9:41</div>
+    <div class="nav">
+      <span class="back" data-go="home">‹ Home</span>
+      <span class="title">Shadowrocket</span>
+      <span class="skip" data-go="sr-routing">Global Routing ›</span>
+    </div>
+    <div class="body">
+      <div class="group">
+        <div class="row" id="sr-sub">
+          <span style="font-size:13px;color:#8E8E93;margin-right:8px;" id="sr-arrow">▸</span>
+          MIYAIP 订阅 <span class="sub2" id="sr-count">19 节点 · 点击展开</span>
+        </div>
+      </div>
+      <div class="group" id="sr-nodes" style="display:none;"></div>
+      <div class="group" style="margin-top:14px;">
+        <div class="row" data-go="sr-routing">Global Routing <span class="sub2" id="sr-mode-value">Proxy</span><span class="chev">›</span></div>
+      </div>
+      <div class="route-bar">Routing: <b id="sr-route">—</b></div>
+    </div>
+  </div>
+
+  <!-- ============ 3. Global Routing 设置页 ============ -->
+  <div class="screen" id="sr-routing">
+    <div class="statusbar">9:41</div>
+    <div class="nav"><span class="back" data-go="shadowrocket">‹ Back</span><span class="title">Global Routing</span></div>
+    <div class="body">
+      <div class="group">
+        <div class="row" id="sr-fallback">Enable Fallback <span class="sw" id="fallback-sw"></span></div>
+      </div>
+      <div class="group" style="margin-top:20px;">
+        <div class="row mode" data-mode="Config">Config</div>
+        <div class="row mode selected" data-mode="Proxy">Proxy</div>
+        <div class="row mode" data-mode="Direct">Direct</div>
+        <div class="row mode" data-mode="Scene">Scene</div>
+      </div>
+      <p style="font-size:13px;color:#6b7280;text-align:center;margin-top:16px;padding:0 30px;line-height:1.6;">Enable Fallback：服务器不可用时自动切换到备用节点。<br>返回主页选中一个节点后，状态栏将出现 VPN。</p>
+    </div>
+  </div>
+
+  <!-- ============ 4. amg 主菜单（8 项） ============ -->
+  <div class="screen" id="amg">
+    <div class="statusbar">9:41</div>
+    <div class="nav"><span class="back" data-go="home">‹ Home</span><span class="title">amg</span></div>
+    <div class="body">
+      <div class="group" style="margin-top:16px;">
+        <div class="row">设备信息 <span class="chev">›</span></div>
+        <div class="row">目标应用 <span class="chev">›</span></div>
+        <div class="row">备份记录 <span class="chev">›</span></div>
+        <div class="row" data-go="amg-working">一键新机 <span class="chev">›</span></div>
+        <div class="row">原始机器 <span class="chev">›</span></div>
+        <div class="row">设置 <span class="chev">›</span></div>
+        <div class="row">工具箱 <span class="chev">›</span></div>
+        <div class="row">关于 <span class="chev">›</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 5. amg 正在操作（4 秒后回主菜单） ============ -->
+  <div class="screen" id="amg-working">
+    <div class="statusbar">9:41</div>
+    <div class="hero">
+      <div class="spinner"></div>
+      <div class="hi" style="font-size:28px;">正在操作，请稍候...</div>
+      <div class="progress"><div></div></div>
+      <div class="sub">请勿断开设备连接</div>
+    </div>
+  </div>
+
+  <!-- ============ 6. 设置（顶部 Apple Account 横幅） ============ -->
+  <div class="screen" id="settings">
+    <div class="statusbar">9:41</div>
+    <div class="nav"><span class="back" data-go="home">‹ Home</span><span class="title">Settings</span></div>
+    <div class="body">
+      <div class="acc-card" data-go="apple-account">
+        <div class="t1">Apple Account</div>
+        <div class="t2" id="acc-email">Sign in to your iPhone</div>
+      </div>
+      <div class="group">
+        <div class="row" data-go="general">General <span class="chev">›</span></div>
+        <div class="row">Wi-Fi <span class="chev">›</span></div>
+        <div class="row">Bluetooth <span class="chev">›</span></div>
+        <div class="row">Notifications <span class="chev">›</span></div>
+        <div class="row">Display &amp; Brightness <span class="chev">›</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 7. Apple Account：登录方式选择 ============ -->
+  <div class="screen" id="apple-account">
+    <div class="statusbar">9:41</div>
+    <div class="nav"><span class="back" data-go="settings">‹ Settings</span><span class="title">Apple Account</span></div>
+    <div class="body">
+      <div class="group" id="aa-logged-out">
+        <div class="row selected" data-go="apple-signin">Sign in Manually</div>
+        <div class="row">Set Up Later in Settings</div>
+      </div>
+      <div class="group" id="aa-logged-in" style="display:none;margin-top:20px;">
+        <div class="row">Name <span class="sub2" id="aa-name">New User</span></div>
+        <div class="row">Email <span class="sub2" id="aa-email">new@x.com</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 8. Apple 手动登录：邮箱/手机号 ============ -->
+  <div class="screen" id="apple-signin">
+    <div class="statusbar">9:41</div>
+    <div class="nav"><span class="back" data-go="apple-account">‹ Back</span><span class="title">Sign In</span></div>
+    <div class="title-text">
+      <div class="t">Sign in to your Apple Account</div>
+      <div class="s">Enter the email address or phone number for your account.</div>
+    </div>
+    <div class="field" id="asid-field">
+      <div class="label">Apple ID</div>
+      <input id="asid-input" type="text" placeholder="name@example.com" autocapitalize="off" autocorrect="off" spellcheck="false">
+    </div>
+    <div class="group" style="margin:18px 20px;">
+      <div class="btn primary" data-go="apple-signin-pass">Continue</div>
+    </div>
+    <div class="row" style="justify-content:center;color:#007AFF;border:none;">Forgot your password?</div>
+  </div>
+
+  <!-- ============ 9. Apple 手动登录：密码 ============ -->
+  <div class="screen" id="apple-signin-pass">
+    <div class="statusbar">9:41</div>
+    <div class="nav"><span class="back" data-go="apple-signin">‹ Back</span><span class="title">Sign In</span></div>
+    <div class="title-text">
+      <div class="t">Enter Your Password</div>
+      <div class="s" id="asid-email"></div>
+    </div>
+    <div class="field" id="asp-field">
+      <div class="label">Password</div>
+      <input id="asp-pass" type="password" placeholder="••••••">
+    </div>
+    <div class="group" style="margin:18px 20px;">
+      <div class="btn primary" id="as-signin-btn">Sign In</div>
+    </div>
+  </div>
+
+  <!-- ============ 10. Poshmark 登录/注册页 ============ -->
+  <div class="screen" id="poshmark">
+    <div class="statusbar">9:41</div>
+    <div class="nav"><span class="back" data-go="home">‹ Home</span><span class="title">Poshmark</span></div>
+    <div class="hero">
+      <div class="brand">Poshmark</div>
+      <div class="sub">Buy &amp; sell fashion.<br>Your closet, your business.</div>
+    </div>
+    <div class="group" style="margin-bottom:60px;">
+      <div class="btn primary" id="pm-apple-btn">Continue with Apple</div>
+      <div class="btn">Sign up with Email</div>
+      <div class="btn">Sign in</div>
+    </div>
+  </div>
+
+  <!-- ============ 11. Poshmark：未登录 Apple 账户提示 ============ -->
+  <div class="overlay" id="poshmark-need-apple">
+    <div class="alert">
+      <div class="a-title">Sign in to your Apple Account</div>
+      <div class="a-msg">You need to sign in to your Apple Account in Settings.</div>
+      <div class="btns">
+        <div class="btn primary" data-go="poshmark">OK</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 12. Apple 授权弹窗（已登录时） ============ -->
+  <div class="overlay" id="poshmark-auth">
+    <div class="alert">
+      <div class="a-title">🍎 "Poshmark" Wants to Use Your Apple ID</div>
+      <div class="a-msg">This allows the app to share your name and email. Your Apple ID password is never shared.</div>
+      <div class="btns">
+        <div class="btn primary" data-go="closet">Continue</div>
+        <div class="btn" data-go="poshmark">Cancel</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 13. Closet 衣橱（注册成功） ============ -->
+  <div class="screen" id="closet">
+    <div class="statusbar">9:41</div>
+    <div class="nav"><span class="back" data-go="poshmark">‹ Home</span><span class="title">My Closet</span></div>
+    <div class="body">
+      <div style="padding:34px 24px;text-align:center;">
+        <div style="width:92px;height:92px;border-radius:50%;background:linear-gradient(135deg,#FFD60A,#FF9500);margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:700;color:#fff;" id="closet-avatar">N</div>
+        <div style="font-size:22px;font-weight:600;margin-top:14px;" id="closet-name">New User</div>
+        <div style="font-size:14px;color:#6B7280;margin-top:4px;" id="closet-email">new@x.com</div>
+      </div>
+      <div class="group">
+        <div class="row">My Closet <span class="chev">0 items</span></div>
+        <div class="row">Followers <span class="chev">0</span></div>
+        <div class="row">Following <span class="chev">0</span></div>
+        <div class="row">List an Item <span class="chev">›</span></div>
+      </div>
+      <div class="group">
+        <div class="row" style="justify-content:center;color:#059669;">✓ Account created — your closet is ready!</div>
+      </div>
+    </div>
+    <div class="tabbar">
+      <div>Home</div><div style="color:#DC2626;font-weight:600;">Closet</div><div>Sell</div><div>Explore</div><div>Profile</div>
+    </div>
+  </div>
+
+  <!-- ============ 14. 刷机链：通用 ============ -->
+  <div class="screen" id="general">
+    <div class="statusbar">9:41</div>
+    <div class="nav"><span class="back" data-go="settings">‹ Settings</span><span class="title">General</span></div>
+    <div class="body">
+      <div class="group">
+        <div class="row">About <span class="chev">›</span></div>
+        <div class="row">Software Update <span class="chev">›</span></div>
+        <div class="row">AirDrop <span class="chev">›</span></div>
+        <div class="row">Keyboard <span class="chev">›</span></div>
+        <div class="row" data-go="reset">Transfer or Reset iPhone <span class="chev">›</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 15. 传输或还原 ============ -->
+  <div class="screen" id="reset">
+    <div class="statusbar">9:41</div>
+    <div class="nav"><span class="back" data-go="general">‹ General</span><span class="title">Transfer or Reset iPhone</span></div>
+    <div class="body">
+      <div class="group">
+        <div class="row">Prepare for New iPhone <span class="chev">›</span></div>
+        <div class="row">Transfer from iPhone <span class="chev">›</span></div>
+        <div class="row" data-go="erase-confirm">Reset <span class="chev">›</span></div>
+      </div>
+      <div class="group" style="margin-top:20px;">
+        <div class="row" data-go="erase-confirm" style="color:#FF3B30;font-weight:600;justify-content:center;">Erase All Content and Settings</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 16. 抹除确认弹窗 ============ -->
+  <div class="overlay" id="erase-confirm">
+    <div class="alert">
+      <div class="a-title">Erase iPhone?</div>
+      <div class="a-msg">This permanently erases media, data, and settings, and resets this iPhone to factory settings.</div>
+      <div class="btns">
+        <div class="btn" data-go="erasing" style="color:#FF3B30;font-weight:600;">Erase</div>
+        <div class="btn" data-go="reset">Cancel</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 17. 抹除中（自动进入激活） ============ -->
+  <div class="screen" id="erasing">
+    <div class="statusbar">9:41</div>
+    <div class="hero">
+      <div class="spinner"></div>
+      <div class="hi" style="font-size:26px;">Erasing iPhone...</div>
+      <div class="progress"><div></div></div>
+      <div class="sub">Please keep your iPhone connected.</div>
+    </div>
+  </div>
+
+  <!-- ============ 18. Hello / 语言 ============ -->
+  <div class="screen" id="hello">
+    <div class="statusbar">9:41</div>
+    <div class="hero">
+      <div class="logo">🍎</div>
+      <div class="hi">Hello</div>
+      <div class="sub">Choose your language.</div>
+    </div>
+    <div class="group" style="margin-bottom:60px;">
+      <div class="row selected" data-go="setup-options">English</div>
+      <div class="row" data-go="setup-options">简体中文</div>
+      <div class="row" data-go="setup-options">Español</div>
+      <div class="row" data-go="setup-options">Français</div>
+    </div>
+  </div>
+
+  <!-- ============ 19. 设置方式 ============ -->
+  <div class="screen" id="setup-options">
+    <div class="statusbar">9:41</div>
+    <div class="nav"><span class="back" data-go="hello">‹ Back</span></div>
+    <div class="title-text"><div class="t">How do you want to set up your iPhone?</div></div>
+    <div class="group" style="margin-top:18px;">
+      <div class="row" data-go="wifi">Set Up Manually</div>
+      <div class="row">Restore from iCloud Backup</div>
+      <div class="row">Restore from Android</div>
+    </div>
+  </div>
+
+  <!-- ============ 20. Wi-Fi（选网络或 Skip 后进入激活登录 Apple ID） ============ -->
+  <div class="screen" id="wifi">
+    <div class="statusbar">9:41</div>
+    <div class="nav"><span class="back" data-go="setup-options">‹ Back</span><span class="title">Wi-Fi</span><span class="skip" data-go="signin">Skip</span></div>
+    <div class="title-text"><div class="t">Choose a Wi-Fi Network</div></div>
+    <div class="group" style="margin-top:14px;">
+      <div class="row" data-go="signin">MyHomeWiFi <span class="chev">›</span></div>
+      <div class="row" data-go="signin">iPhoneWiFi-5G <span class="chev">›</span></div>
+    </div>
+  </div>
+
+  <!-- ============ 21. 激活登录 Apple ID：邮箱 ============ -->
+  <div class="screen" id="signin">
+    <div class="statusbar">9:41</div>
+    <div class="nav"><span class="back" data-go="wifi">‹ Back</span><span class="title">Sign In</span></div>
+    <div class="title-text">
+      <div class="t">Sign in with your Apple ID</div>
+      <div class="s">Enter the email or phone number for your account.</div>
+    </div>
+    <div class="field" id="appleid-field">
+      <div class="label">Apple ID</div>
+      <input id="appleid-input" type="text" placeholder="name@example.com" autocapitalize="off" autocorrect="off" spellcheck="false">
+    </div>
+    <div class="group" style="margin:18px 20px;">
+      <div class="btn primary" id="continue-btn" data-go="signin-pass">Continue</div>
+    </div>
+  </div>
+
+  <!-- ============ 22. 激活登录 Apple ID：密码 ============ -->
+  <div class="screen" id="signin-pass">
+    <div class="statusbar">9:41</div>
+    <div class="nav"><span class="back" data-go="signin">‹ Back</span><span class="title">Sign In</span></div>
+    <div class="title-text">
+      <div class="t">Enter Your Password</div>
+      <div class="s" id="signin-email"></div>
+    </div>
+    <div class="field" id="pass-field">
+      <div class="label">Password</div>
+      <input id="signin-pass" type="password" placeholder="••••••">
+    </div>
+    <div class="group" style="margin:18px 20px;">
+      <div class="btn primary" id="act-signin-btn" data-go="terms">Sign In</div>
+    </div>
+  </div>
+
+  <!-- ============ 23. 条款 ============ -->
+  <div class="screen" id="terms">
+    <div class="statusbar">9:41</div>
+    <div class="nav"><span class="back" data-go="signin-pass">‹ Back</span><span class="title">Terms and Conditions</span></div>
+    <div class="body">
+      <div class="group">
+        <div class="row">Software License Agreement</div>
+        <div class="row">Warranty</div>
+        <div class="row">Apple Privacy Policy</div>
+      </div>
+      <div class="group" style="margin-top:20px;">
+        <div class="btn primary" data-go="passcode">Agree</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 24. 创建密码 ============ -->
+  <div class="screen" id="passcode">
+    <div class="statusbar">9:41</div>
+    <div class="nav"><span class="back" data-go="terms">‹ Back</span><span class="title">Passcode</span></div>
+    <div class="title-text">
+      <div class="t">Create a Passcode</div>
+      <div class="s">Enter a six-digit passcode to protect your data.</div>
+    </div>
+    <div class="group" style="margin:26px 20px;">
+      <div class="btn primary" data-go="home">Continue</div>
+    </div>
+  </div>
+
+</div>
+
+<div id="hint">Shadowrocket：Global Routing 开 Enable Fallback → 选节点（状态栏出 VPN）→ amg 一键新机 → Settings 顶部登录 Apple ID → Poshmark</div>
+<div id="calib"></div>
+
+<script>
+(function () {
+  'use strict';
+  var stage = document.getElementById('stage');
+  var calib = document.getElementById('calib');
+
+  /* ---------- 等比缩放 + 校准信息 ---------- */
+  function layout() {
+    var vw = window.innerWidth, vh = window.innerHeight;
+    var s = Math.min(vw / 585, vh / 1266);
+    stage.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
+    var w = Math.round(585 * s), h = Math.round(1266 * s);
+    var x = Math.round((vw - w) / 2), y = Math.round((vh - h) / 2);
+    calib.textContent =
+      'stage 585x1266 → ' + w + 'x' + h + ' @ (' + x + ',' + y + ')\n' +
+      '区域配置: x=' + x + ' y=' + y + ' w=' + w + ' h=' + h + '\n' +
+      '（浏览器 F11 全屏）';
+  }
+  window.addEventListener('resize', layout);
+  layout();
+
+  /* ---------- 状态 ---------- */
+  function vpnOn() { return sessionStorage.getItem('mock.vpn') === '1'; }
+  function appleLoggedIn() { return sessionStorage.getItem('mock.appleLoggedIn') === '1'; }
+  function appleId() { return sessionStorage.getItem('mock.appleId') || ''; }
+
+  /* ---------- Shadowrocket 节点生成（MIYAIP-1~19） ---------- */
+  var ms = [132,148,121,155,167,143,129,158,171,140,152,137,169,146,133,161,175,139,150];
+  var nodesBox = document.getElementById('sr-nodes');
+  for (var i = 1; i <= 19; i++) {
+    (function (n) {
+      var d = document.createElement('div');
+      d.className = 'row node';
+      d.setAttribute('data-node', n);
+      d.innerHTML = n + '<span class="sub2">SOCKS5 · UDP · ' + ms[n.split('-')[1] - 1] + 'ms</span><span class="tag">UDP</span>';
+      d.addEventListener('click', function () {
+        document.querySelectorAll('#sr-nodes .node').forEach(function (r) { r.classList.remove('selected'); });
+        d.classList.add('selected');
+        sessionStorage.setItem('mock.vpn', '1');
+        document.getElementById('sr-mode-value').textContent = 'Proxy';
+        document.getElementById('sr-route').textContent = 'Proxy · ' + n + ' · 已连接';
+        updateStatusbars();
+      });
+      nodesBox.appendChild(d);
+    })('MIYAIP-' + i);
+  }
+
+  /* 订阅行：展开/收起节点 */
+  document.getElementById('sr-sub').addEventListener('click', function () {
+    var box = document.getElementById('sr-nodes');
+    var hidden = box.style.display === 'none';
+    box.style.display = hidden ? 'block' : 'none';
+    document.getElementById('sr-arrow').textContent = hidden ? '▾' : '▸';
+    document.getElementById('sr-count').textContent = hidden ? '19 节点 · 点击收起' : '19 节点 · 点击展开';
+  });
+
+  /* Enable Fallback 开关 */
+  document.getElementById('sr-fallback').addEventListener('click', function () {
+    var sw = document.getElementById('fallback-sw');
+    sw.classList.toggle('on');
+  });
+
+  /* 路由模式单选 */
+  document.querySelectorAll('.mode').forEach(function (m) {
+    m.addEventListener('click', function () {
+      document.querySelectorAll('.mode').forEach(function (x) { x.classList.remove('selected'); });
+      m.classList.add('selected');
+      document.getElementById('sr-mode-value').textContent = m.getAttribute('data-mode');
+    });
+  });
+
+  /* ---------- 屏幕切换 ---------- */
+  var screens = Array.prototype.slice.call(document.querySelectorAll('.screen'));
+  var overlays = Array.prototype.slice.call(document.querySelectorAll('.overlay'));
+
+  function updateStatusbars() {
+    var vpn = vpnOn();
+    document.querySelectorAll('.statusbar').forEach(function (s) {
+      s.textContent = (vpn ? 'VPN  ' : '') + '9:41';
+    });
+    var vb = document.getElementById('vpn-banner');
+    if (vb) vb.style.display = (vpn && id === 'home') ? 'block' : 'none';
+  }
+
+  function show(id) {
+    screens.forEach(function (s) { s.classList.toggle('active', s.id === id); });
+    overlays.forEach(function (o) { o.classList.toggle('active', o.id === id); });
+    updateStatusbars();
+
+    if (id === 'settings') {
+      document.getElementById('acc-email').textContent =
+        appleLoggedIn() ? (appleId() || 'new@x.com') : 'Sign in to your iPhone';
+    }
+    if (id === 'apple-account') {
+      var logged = appleLoggedIn();
+      document.getElementById('aa-logged-out').style.display = logged ? 'none' : 'block';
+      document.getElementById('aa-logged-in').style.display = logged ? 'block' : 'none';
+      if (logged) {
+        var idv = appleId();
+        var nm = idv ? idv.split('@')[0] : 'New User';
+        document.getElementById('aa-name').textContent = nm;
+        document.getElementById('aa-email').textContent = idv || 'new@x.com';
+      }
+    }
+    if (id === 'closet') {
+      var idv2 = appleId();
+      var nm2 = idv2 ? idv2.split('@')[0] : 'New User';
+      document.getElementById('closet-name').textContent = nm2;
+      document.getElementById('closet-avatar').textContent = nm2.charAt(0).toUpperCase();
+      document.getElementById('closet-email').textContent = idv2 || 'new@x.com';
+    }
+    if (id === 'erasing') {
+      sessionStorage.removeItem('mock.activated');
+      setTimeout(function () { show('hello'); }, 2600);
+    }
+    if (id === 'amg-working') {
+      setTimeout(function () { show('amg'); }, 4000);
+    }
+  }
+
+  // URL hash 直达状态（调试用）：file://...#signin
+  function applyHash() {
+    var h = (location.hash || '').replace('#', '');
+    if (h && document.getElementById(h)) show(h);
+  }
+  window.addEventListener('hashchange', applyHash);
+  applyHash();
+
+  // 通用点击跳转：data-go
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    while (t && t !== document.body) {
+      if (t.getAttribute && t.getAttribute('data-go')) {
+        show(t.getAttribute('data-go'));
+        return;
+      }
+      t = t.parentNode;
+    }
+  });
+
+  // 输入框区域点击聚焦（供 Robot CLICK 后键入）
+  function focusField(fieldId, inputId) {
+    var f = document.getElementById(fieldId);
+    if (!f) return;
+    f.addEventListener('click', function () {
+      var inp = document.getElementById(inputId);
+      if (inp) inp.focus();
+    });
+  }
+  focusField('asid-field', 'asid-input');
+  focusField('asp-field', 'asp-pass');
+  focusField('appleid-field', 'appleid-input');
+  focusField('pass-field', 'signin-pass');
+
+  // 激活登录：Apple ID 带入密码页
+  document.getElementById('continue-btn').addEventListener('click', function () {
+    var v = document.getElementById('appleid-input').value.trim();
+    sessionStorage.setItem('mock.appleId', v);
+    document.getElementById('signin-email').textContent = v;
+  });
+
+  // 激活登录：Sign In 完成登录（此后 Poshmark 走授权，不再弹未登录提示）
+  document.getElementById('act-signin-btn').addEventListener('click', function () {
+    sessionStorage.setItem('mock.appleLoggedIn', '1');
+  });
+
+  // Apple 登录：Continue 带邮箱进密码页
+  document.querySelector('#apple-signin [data-go="apple-signin-pass"]').addEventListener('click', function () {
+    document.getElementById('asid-email').textContent = document.getElementById('asid-input').value.trim();
+  });
+
+  // Sign In 完成登录 → 回设置
+  document.getElementById('as-signin-btn').addEventListener('click', function () {
+    var v = document.getElementById('asid-input').value.trim();
+    sessionStorage.setItem('mock.appleLoggedIn', '1');
+    sessionStorage.setItem('mock.appleId', v || 'new@x.com');
+    show('settings');
+  });
+
+  // Poshmark：Continue with Apple 按登录状态分支
+  document.getElementById('pm-apple-btn').addEventListener('click', function () {
+    show(appleLoggedIn() ? 'poshmark-auth' : 'poshmark-need-apple');
+  });
+
+  // 点击校准信息可隐藏，避免干扰后续 OCR
+  calib.addEventListener('click', function () { this.style.display = 'none'; });
+})();
+</script>
+</body>
+</html>

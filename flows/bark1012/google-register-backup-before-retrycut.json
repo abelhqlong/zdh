@@ -1,0 +1,1806 @@
+{
+ "name": "google-register",
+ "description": "谷歌账号创建（YouTube入口）：小火箭节点→AMG一键新机→YouTube→Sign in→Create account→姓名/生日/用户名/密码→停手机号验证页",
+ "steps": [
+  {
+   "stepOrder": 1,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 2,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "Shadowrocket",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "dy": -55
+   }
+  },
+  {
+   "stepOrder": 3,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 3000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 4,
+   "actionType": "CLICK_RANDOM",
+   "targetType": "TEXT",
+   "targetValue": "MIYA-",
+   "retryCount": 5,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 5,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 2000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 6,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 5,
+   "timeout": 1000,
+   "x": 1274,
+   "y": 1009,
+   "config": {}
+  },
+  {
+   "stepOrder": 7,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 8,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "AMG",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 9,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 3000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 10,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "一键新机",
+   "retryCount": 12,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 11,
+   "actionType": "LABEL",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "label": "amg_retry"
+   }
+  },
+  {
+   "stepOrder": 12,
+   "actionType": "IF_TEXT",
+   "targetType": "TEXT",
+   "targetValue": "通过IP获取位置失败",
+   "retryCount": 1,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "expect": "present",
+    "gotoOnTrue": "dismiss_ip_error"
+   }
+  },
+  {
+   "stepOrder": 13,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 2000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 14,
+   "actionType": "CHECK",
+   "targetType": "TEXT",
+   "targetValue": "正在操作",
+   "retryCount": 5,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "expect": "present"
+   }
+  },
+  {
+   "stepOrder": 15,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 8000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 16,
+   "actionType": "CHECK",
+   "targetType": "TEXT",
+   "targetValue": "设备信息",
+   "retryCount": 10,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "expect": "present"
+   }
+  },
+  {
+   "stepOrder": 17,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 5,
+   "timeout": 1000,
+   "x": 1371,
+   "y": 1023,
+   "config": {}
+  },
+  {
+   "stepOrder": 18,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 19,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 20,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "YouTube",
+   "retryCount": 5,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "dy": -55
+   }
+  },
+  {
+   "stepOrder": 21,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 8000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 22,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "Sign in",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "onFail": "next"
+   }
+  },
+  {
+   "stepOrder": 23,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 3000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 24,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "Continue",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "onFail": "next"
+   }
+  },
+  {
+   "stepOrder": 25,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 2000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 26,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "Use another account",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "onFail": "next"
+   }
+  },
+  {
+   "stepOrder": 27,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 2000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 28,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "Create account",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "onFail": "next"
+   }
+  },
+  {
+   "stepOrder": 29,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 4000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 30,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "For my personal use",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "onFail": "next"
+   }
+  },
+  {
+   "stepOrder": 31,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 4000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 32,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": 1552,
+   "y": 506,
+   "config": {}
+  },
+  {
+   "stepOrder": 33,
+   "actionType": "INPUT",
+   "targetType": "TEXT",
+   "targetValue": "${FIRST_NAME}",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 34,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 35,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": 1552,
+   "y": 578,
+   "config": {}
+  },
+  {
+   "stepOrder": 36,
+   "actionType": "INPUT",
+   "targetType": "TEXT",
+   "targetValue": "${LAST_NAME}",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 37,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 38,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "Next",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 39,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 4000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 40,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "Month",
+   "retryCount": 3,
+   "timeout": 1000,
+   "config": {}
+  },
+  {
+   "stepOrder": 41,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 2000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 42,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "January",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 43,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 2000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 44,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "Day",
+   "retryCount": 3,
+   "timeout": 1000,
+   "config": {}
+  },
+  {
+   "stepOrder": 45,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 2000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 46,
+   "actionType": "INPUT",
+   "targetType": "TEXT",
+   "targetValue": "${DAY}",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 47,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 48,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "Year",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 49,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 50,
+   "actionType": "INPUT",
+   "targetType": "TEXT",
+   "targetValue": "${YEAR}",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 51,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "Gender",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "onFail": "next"
+   }
+  },
+  {
+   "stepOrder": 52,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 2000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 53,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "Rather not say",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "onFail": "next"
+   }
+  },
+  {
+   "stepOrder": 54,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 2000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 55,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 56,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "Next",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 57,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 5000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 58,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": 1355,
+   "y": 494,
+   "config": {}
+  },
+  {
+   "stepOrder": 59,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 60,
+   "actionType": "INPUT",
+   "targetType": "TEXT",
+   "targetValue": "${USERNAME}",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 61,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 62,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "Next",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 63,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 3000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 64,
+   "actionType": "LABEL",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "label": "route_check"
+   }
+  },
+  {
+   "stepOrder": 65,
+   "actionType": "IF_TEXT",
+   "targetType": "TEXT",
+   "targetValue": "Create an email address",
+   "retryCount": 1,
+   "timeout": 2000,
+   "x": null,
+   "y": null,
+   "config": {
+    "expect": "present",
+    "gotoOnTrue": "create_email"
+   }
+  },
+  {
+   "stepOrder": 66,
+   "actionType": "IF_TEXT",
+   "targetType": "TEXT",
+   "targetValue": "Create a strong password",
+   "retryCount": 1,
+   "timeout": 2000,
+   "x": null,
+   "y": null,
+   "config": {
+    "expect": "present",
+    "gotoOnTrue": "pw_skip",
+    "gotoOnFalse": "route_fail"
+   }
+  },
+  {
+   "stepOrder": 67,
+   "actionType": "LABEL",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "label": "route_fail"
+   }
+  },
+  {
+   "stepOrder": 68,
+   "actionType": "CHECK",
+   "targetType": "TEXT",
+   "targetValue": "__ROUTE_ERR__",
+   "retryCount": 1,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "onFail": "fail",
+    "expect": "present"
+   }
+  },
+  {
+   "stepOrder": 69,
+   "actionType": "LABEL",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "label": "create_email"
+   }
+  },
+  {
+   "stepOrder": 70,
+   "actionType": "CHECK",
+   "targetType": "TEXT",
+   "targetValue": "Create an email address",
+   "retryCount": 2,
+   "timeout": 2000,
+   "x": null,
+   "y": null,
+   "config": {
+    "onFail": "goto:route_check",
+    "expect": "present"
+   }
+  },
+  {
+   "stepOrder": 71,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 3000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 72,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "own",
+   "retryCount": 3,
+   "timeout": 1000,
+   "config": {
+    "onFail": "goto:create_email"
+   }
+  },
+  {
+   "stepOrder": 73,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 2500,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 74,
+   "actionType": "INPUT",
+   "targetType": "TEXT",
+   "targetValue": "${USERNAME}",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 75,
+   "actionType": "KEY",
+   "targetType": "TEXT",
+   "targetValue": "RETURN",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 76,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 2000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 77,
+   "actionType": "CHECK",
+   "targetType": "TEXT",
+   "targetValue": "${USERNAME}",
+   "retryCount": 2,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "onFail": "goto:create_email",
+    "expect": "present"
+   }
+  },
+  {
+   "stepOrder": 78,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 79,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "Next",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "onFail": "next"
+   }
+  },
+  {
+   "stepOrder": 80,
+   "actionType": "LABEL",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "label": "pw_skip"
+   }
+  },
+  {
+   "stepOrder": 81,
+   "actionType": "CHECK",
+   "targetType": "TEXT",
+   "targetValue": "Create a strong password",
+   "retryCount": 2,
+   "timeout": 2000,
+   "x": null,
+   "y": null,
+   "config": {
+    "onFail": "goto:route_check",
+    "expect": "present"
+   }
+  },
+  {
+   "stepOrder": 82,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 2000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 83,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": 1348,
+   "y": 493,
+   "config": {}
+  },
+  {
+   "stepOrder": 84,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 85,
+   "actionType": "INPUT",
+   "targetType": "TEXT",
+   "targetValue": "${PASSWORD}",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 86,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 2000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 87,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "Not Now",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "onFail": "next"
+   }
+  },
+  {
+   "stepOrder": 88,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 2000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 89,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "Next",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 90,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "Not Now",
+   "retryCount": 2,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "onFail": "next"
+   }
+  },
+  {
+   "stepOrder": 91,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 10000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 92,
+   "actionType": "IF_TEXT",
+   "targetType": "TEXT",
+   "targetValue": "Something went wrong",
+   "retryCount": 1,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "expect": "present",
+    "gotoOnTrue": "net_err_fail"
+   }
+  },
+  {
+   "stepOrder": 93,
+   "actionType": "IF_TEXT",
+   "targetType": "TEXT",
+   "targetValue": "Phone number",
+   "retryCount": 1,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "expect": "present",
+    "gotoOnTrue": "continue_phone"
+   }
+  },
+  {
+   "stepOrder": 94,
+   "actionType": "LABEL",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "label": "net_err_fail"
+   }
+  },
+  {
+   "stepOrder": 95,
+   "actionType": "CHECK",
+   "targetType": "TEXT",
+   "targetValue": "__NET_ERROR__",
+   "retryCount": 1,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "onFail": "fail",
+    "expect": "present"
+   }
+  },
+  {
+   "stepOrder": 96,
+   "actionType": "LABEL",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "label": "continue_phone"
+   }
+  },
+  {
+   "stepOrder": 97,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 98,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "Phone number",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "onFail": "next"
+   }
+  },
+  {
+   "stepOrder": 99,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 100,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": 1371,
+   "y": 504,
+   "config": {}
+  },
+  {
+   "stepOrder": 101,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 2000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 102,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "United States",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "onFail": "next"
+   }
+  },
+  {
+   "stepOrder": 103,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 2000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 104,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "Phone number",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 105,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 106,
+   "actionType": "INPUT",
+   "targetType": "TEXT",
+   "targetValue": "${PHONE}",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 107,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 108,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "Next",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "onFail": "next"
+   }
+  },
+  {
+   "stepOrder": 109,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 8000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 110,
+   "actionType": "CHECK",
+   "targetType": "TEXT",
+   "targetValue": "Confirm the code",
+   "retryCount": 5,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "onFail": "fail",
+    "expect": "present"
+   }
+  },
+  {
+   "stepOrder": 111,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 1,
+   "timeout": 2500,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 112,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 1,
+   "timeout": 1000,
+   "x": 1550,
+   "y": 496,
+   "config": {}
+  },
+  {
+   "stepOrder": 113,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 1,
+   "timeout": 800,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 114,
+   "actionType": "INPUT",
+   "targetType": "TEXT",
+   "targetValue": "${CODE}",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 115,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 1,
+   "timeout": 800,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 116,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 1,
+   "timeout": 1000,
+   "x": 1746,
+   "y": 588,
+   "config": {}
+  },
+  {
+   "stepOrder": 117,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 1,
+   "timeout": 12000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 118,
+   "actionType": "IF_TEXT",
+   "targetType": "TEXT",
+   "targetValue": "Add phone",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "expect": "present",
+    "gotoOnTrue": "tail_addphone"
+   }
+  },
+  {
+   "stepOrder": 119,
+   "actionType": "IF_TEXT",
+   "targetType": "TEXT",
+   "targetValue": "Review your account",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "expect": "present",
+    "gotoOnTrue": "tail_review"
+   }
+  },
+  {
+   "stepOrder": 120,
+   "actionType": "IF_TEXT",
+   "targetType": "TEXT",
+   "targetValue": "Privacy and Terms",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "expect": "present",
+    "gotoOnTrue": "tail_terms"
+   }
+  },
+  {
+   "stepOrder": 121,
+   "actionType": "IF_TEXT",
+   "targetType": "TEXT",
+   "targetValue": "Confirm settings",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "expect": "present",
+    "gotoOnTrue": "tail_confirm"
+   }
+  },
+  {
+   "stepOrder": 122,
+   "actionType": "GOTO",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "label": "tail_done"
+   }
+  },
+  {
+   "stepOrder": 123,
+   "actionType": "LABEL",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "label": "tail_addphone"
+   }
+  },
+  {
+   "stepOrder": 124,
+   "actionType": "SWIPE",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": 1400,
+   "y": 700,
+   "config": {
+    "toX": 1400,
+    "toY": 360,
+    "duration": 800
+   }
+  },
+  {
+   "stepOrder": 125,
+   "actionType": "SWIPE",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": 1400,
+   "y": 700,
+   "config": {
+    "toX": 1400,
+    "toY": 360,
+    "duration": 800
+   }
+  },
+  {
+   "stepOrder": 126,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "I'm in",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 127,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 1,
+   "timeout": 8000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 128,
+   "actionType": "IF_TEXT",
+   "targetType": "TEXT",
+   "targetValue": "Review your account",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "expect": "present",
+    "gotoOnTrue": "tail_review"
+   }
+  },
+  {
+   "stepOrder": 129,
+   "actionType": "IF_TEXT",
+   "targetType": "TEXT",
+   "targetValue": "Privacy and Terms",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "expect": "present",
+    "gotoOnTrue": "tail_terms"
+   }
+  },
+  {
+   "stepOrder": 130,
+   "actionType": "IF_TEXT",
+   "targetType": "TEXT",
+   "targetValue": "Confirm settings",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "expect": "present",
+    "gotoOnTrue": "tail_confirm"
+   }
+  },
+  {
+   "stepOrder": 131,
+   "actionType": "GOTO",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "label": "tail_done"
+   }
+  },
+  {
+   "stepOrder": 132,
+   "actionType": "LABEL",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "label": "tail_review"
+   }
+  },
+  {
+   "stepOrder": 133,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 1,
+   "timeout": 1000,
+   "x": 1745,
+   "y": 631,
+   "config": {}
+  },
+  {
+   "stepOrder": 134,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 1,
+   "timeout": 12000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 135,
+   "actionType": "IF_TEXT",
+   "targetType": "TEXT",
+   "targetValue": "Privacy and Terms",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "expect": "present",
+    "gotoOnTrue": "tail_terms"
+   }
+  },
+  {
+   "stepOrder": 136,
+   "actionType": "IF_TEXT",
+   "targetType": "TEXT",
+   "targetValue": "Confirm settings",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "expect": "present",
+    "gotoOnTrue": "tail_confirm"
+   }
+  },
+  {
+   "stepOrder": 137,
+   "actionType": "GOTO",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "label": "tail_done"
+   }
+  },
+  {
+   "stepOrder": 138,
+   "actionType": "LABEL",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "label": "tail_terms"
+   }
+  },
+  {
+   "stepOrder": 139,
+   "actionType": "SWIPE",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": 1400,
+   "y": 700,
+   "config": {
+    "toX": 1400,
+    "toY": 360,
+    "duration": 800
+   }
+  },
+  {
+   "stepOrder": 140,
+   "actionType": "SWIPE",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": 1400,
+   "y": 700,
+   "config": {
+    "toX": 1400,
+    "toY": 360,
+    "duration": 800
+   }
+  },
+  {
+   "stepOrder": 141,
+   "actionType": "SWIPE",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": 1400,
+   "y": 700,
+   "config": {
+    "toX": 1400,
+    "toY": 360,
+    "duration": 800
+   }
+  },
+  {
+   "stepOrder": 142,
+   "actionType": "SWIPE",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": 1400,
+   "y": 700,
+   "config": {
+    "toX": 1400,
+    "toY": 360,
+    "duration": 800
+   }
+  },
+  {
+   "stepOrder": 143,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": "I agree",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 144,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 1,
+   "timeout": 12000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 145,
+   "actionType": "IF_TEXT",
+   "targetType": "TEXT",
+   "targetValue": "Confirm settings",
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "expect": "present",
+    "gotoOnTrue": "tail_confirm"
+   }
+  },
+  {
+   "stepOrder": 146,
+   "actionType": "GOTO",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "label": "tail_done"
+   }
+  },
+  {
+   "stepOrder": 147,
+   "actionType": "LABEL",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "label": "tail_confirm"
+   }
+  },
+  {
+   "stepOrder": 148,
+   "actionType": "CLICK",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 1,
+   "timeout": 1000,
+   "x": 1727,
+   "y": 595,
+   "config": {}
+  },
+  {
+   "stepOrder": 149,
+   "actionType": "WAIT",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 1,
+   "timeout": 15000,
+   "x": null,
+   "y": null,
+   "config": {}
+  },
+  {
+   "stepOrder": 150,
+   "actionType": "LABEL",
+   "targetType": "TEXT",
+   "targetValue": null,
+   "retryCount": 3,
+   "timeout": 1000,
+   "x": null,
+   "y": null,
+   "config": {
+    "label": "tail_done"
+   }
+  }
+ ]
+}

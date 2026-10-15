@@ -1,0 +1,702 @@
+{
+  "name": "full-flash",
+  "steps": [
+    {
+      "stepOrder": 1,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Shadowrocket",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 2,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 800,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 3,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Global Routing",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 4,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 600,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 5,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Enable Fallback",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 6,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 400,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 7,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Proxy",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 8,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 300,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 9,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Back",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 10,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 600,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 11,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "MIYAIP 订阅",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 12,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 600,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 13,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "MIYAIP-7",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 14,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 800,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 15,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Home",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 16,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 500,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 17,
+      "actionType": "CHECK",
+      "targetType": "TEXT",
+      "targetValue": "VPN",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {
+        "expect": "present"
+      }
+    },
+    {
+      "stepOrder": 18,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "amg",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 19,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 800,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 20,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "一键新机",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 21,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 1200,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 22,
+      "actionType": "CHECK",
+      "targetType": "TEXT",
+      "targetValue": "正在操作",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {
+        "expect": "present"
+      }
+    },
+    {
+      "stepOrder": 23,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 5000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 24,
+      "actionType": "CHECK",
+      "targetType": "TEXT",
+      "targetValue": "设备信息",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {
+        "expect": "present"
+      }
+    },
+    {
+      "stepOrder": 25,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Home",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 26,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 500,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 27,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Settings",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 28,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 500,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 29,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "General",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 30,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Transfer or Reset iPhone",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 31,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Erase All Content and Settings",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 32,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Erase",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 33,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 3000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 34,
+      "actionType": "CHECK",
+      "targetType": "TEXT",
+      "targetValue": "Hello",
+      "retryCount": 5,
+      "timeout": 10000,
+      "x": null,
+      "y": null,
+      "config": {
+        "expect": "present"
+      }
+    },
+    {
+      "stepOrder": 35,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "English",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 36,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Set Up Manually",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 37,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Skip",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 38,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 800,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 39,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Apple ID",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": { "index": 1 }
+    },
+    {
+      "stepOrder": 40,
+      "actionType": "INPUT",
+      "targetType": "TEXT",
+      "targetValue": "${APPLE_ID}",
+      "retryCount": 3,
+      "timeout": 5000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 41,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Continue",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 42,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 800,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 43,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Password",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": { "index": 1 }
+    },
+    {
+      "stepOrder": 44,
+      "actionType": "INPUT",
+      "targetType": "TEXT",
+      "targetValue": "${PASSWORD}",
+      "retryCount": 3,
+      "timeout": 5000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 45,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Sign In",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {
+        "index": 1
+      }
+    },
+    {
+      "stepOrder": 46,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 800,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 47,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Agree",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 48,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 600,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 49,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Continue",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 50,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 1500,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 51,
+      "actionType": "CHECK",
+      "targetType": "TEXT",
+      "targetValue": "Poshmark",
+      "retryCount": 5,
+      "timeout": 10000,
+      "x": null,
+      "y": null,
+      "config": {
+        "expect": "present"
+      }
+    },
+    {
+      "stepOrder": 52,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Poshmark",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 53,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 800,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 54,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Continue with Apple",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 55,
+      "actionType": "IF_TEXT",
+      "targetType": "TEXT",
+      "targetValue": "Sign in to your Apple Account",
+      "retryCount": 2,
+      "timeout": 4000,
+      "x": null,
+      "y": null,
+      "config": {
+        "expect": "present",
+        "gotoOnTrue": "need-apple"
+      }
+    },
+    {
+      "stepOrder": 56,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Continue",
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 57,
+      "actionType": "CHECK",
+      "targetType": "TEXT",
+      "targetValue": "My Closet",
+      "retryCount": 5,
+      "timeout": 10000,
+      "x": null,
+      "y": null,
+      "config": {
+        "expect": "present"
+      }
+    },
+    {
+      "stepOrder": 58,
+      "actionType": "GOTO",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {
+        "label": "end"
+      }
+    },
+    {
+      "stepOrder": 59,
+      "actionType": "LABEL",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {
+        "label": "need-apple"
+      }
+    },
+    {
+      "stepOrder": 60,
+      "actionType": "WAIT_CODE",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 30000,
+      "x": null,
+      "y": null,
+      "config": {
+        "waitMs": 30000,
+        "message": "Apple 账户未登录，请在设备上手动完成登录后继续"
+      }
+    },
+    {
+      "stepOrder": 61,
+      "actionType": "LABEL",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {
+        "label": "end"
+      }
+    }
+  ]
+}

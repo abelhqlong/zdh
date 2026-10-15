@@ -1,0 +1,510 @@
+{
+  "name" : "22",
+  "description" : "Shadowrocket选最快节点 → AMG一键新机 → Apple账号登录",
+  "steps" : [ {
+    "stepOrder" : 1,
+    "actionType" : "WAIT",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 2,
+    "actionType" : "CLICK",
+    "targetType" : "TEXT",
+    "targetValue" : "Shadowrocket",
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : {
+      "dy" : -55
+    }
+  }, {
+    "stepOrder" : 3,
+    "actionType" : "WAIT",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 3000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 4,
+    "actionType" : "CLICK_RANDOM",
+    "targetType" : "TEXT",
+    "targetValue" : "miya-",
+    "retryCount" : 5,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 5,
+    "actionType" : "WAIT",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 2000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 6,
+    "actionType" : "CLICK",
+    "targetType" : "TEXT",
+    "targetValue" : "主屏幕",
+    "retryCount" : 5,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 7,
+    "actionType" : "WAIT",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 8,
+    "actionType" : "CLICK",
+    "targetType" : "TEXT",
+    "targetValue" : "AMG",
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 9,
+    "actionType" : "WAIT",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 3000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 10,
+    "actionType" : "CLICK",
+    "targetType" : "TEXT",
+    "targetValue" : "一键新机",
+    "retryCount" : 12,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 11,
+    "actionType" : "WAIT",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 2000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 12,
+    "actionType" : "CHECK",
+    "targetType" : "TEXT",
+    "targetValue" : "正在操作",
+    "retryCount" : 5,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : {
+      "expect" : "present"
+    }
+  }, {
+    "stepOrder" : 13,
+    "actionType" : "WAIT",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 8000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 14,
+    "actionType" : "CHECK",
+    "targetType" : "TEXT",
+    "targetValue" : "设备信息",
+    "retryCount" : 10,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : {
+      "expect" : "present"
+    }
+  }, {
+    "stepOrder" : 15,
+    "actionType" : "CLICK",
+    "targetType" : "TEXT",
+    "targetValue" : "主屏幕",
+    "retryCount" : 5,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 16,
+    "actionType" : "WAIT",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 17,
+    "actionType" : "WAIT",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 18,
+    "actionType" : "CLICK",
+    "targetType" : "TEXT",
+    "targetValue" : "Settings",
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : {
+      "dy" : -50
+    }
+  }, {
+    "stepOrder" : 19,
+    "actionType" : "WAIT",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 2000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 20,
+    "actionType" : "CLICK",
+    "targetType" : "TEXT",
+    "targetValue" : "Apple Account",
+    "retryCount" : 5,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 21,
+    "actionType" : "WAIT",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 2000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 22,
+    "actionType" : "IF_TEXT",
+    "targetType" : "TEXT",
+    "targetValue" : "Email or Phone Number",
+    "retryCount" : 1,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : {
+      "expect" : "present",
+      "gotoOnTrue" : "enter_email"
+    }
+  }, {
+    "stepOrder" : 23,
+    "actionType" : "CLICK",
+    "targetType" : "TEXT",
+    "targetValue" : "Sign in Manually",
+    "retryCount" : 2,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : {
+      "onFail" : "goto:go_back"
+    }
+  }, {
+    "stepOrder" : 24,
+    "actionType" : "WAIT",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 2000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 25,
+    "actionType" : "LABEL",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : {
+      "label" : "enter_email"
+    }
+  }, {
+    "stepOrder" : 26,
+    "actionType" : "CLICK",
+    "targetType" : "TEXT",
+    "targetValue" : "Email or Phone Number",
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 27,
+    "actionType" : "INPUT",
+    "targetType" : "TEXT",
+    "targetValue" : "hiersspahr1@boonesliquidationoutlet.appleaccount.com",
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 28,
+    "actionType" : "WAIT",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 29,
+    "actionType" : "CLICK",
+    "targetType" : "TEXT",
+    "targetValue" : "Continue",
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 30,
+    "actionType" : "WAIT",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 2000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 31,
+    "actionType" : "CLICK",
+    "targetType" : "TEXT",
+    "targetValue" : "Password",
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 32,
+    "actionType" : "INPUT",
+    "targetType" : "TEXT",
+    "targetValue" : "j7FLski7123",
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 33,
+    "actionType" : "WAIT",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 34,
+    "actionType" : "CLICK",
+    "targetType" : "TEXT",
+    "targetValue" : "Continue",
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 35,
+    "actionType" : "WAIT",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 6000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 36,
+    "actionType" : "CLICK",
+    "targetType" : "TEXT",
+    "targetValue" : "OK",
+    "retryCount" : 2,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : {
+      "onFail" : "skip"
+    }
+  }, {
+    "stepOrder" : 37,
+    "actionType" : "WAIT",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 38,
+    "actionType" : "CLICK",
+    "targetType" : "TEXT",
+    "targetValue" : "主屏幕",
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 39,
+    "actionType" : "WAIT",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 40,
+    "actionType" : "CLICK",
+    "targetType" : "TEXT",
+    "targetValue" : "Poshmark",
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : {
+      "dy" : -55
+    }
+  }, {
+    "stepOrder" : 41,
+    "actionType" : "WAIT",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 8000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 42,
+    "actionType" : "CLICK",
+    "targetType" : "TEXT",
+    "targetValue" : "Sign up with Email",
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : {
+      "onSuccess" : "stop"
+    }
+  }, {
+    "stepOrder" : 43,
+    "actionType" : "LABEL",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : {
+      "label" : "go_back"
+    }
+  }, {
+    "stepOrder" : 44,
+    "actionType" : "CLICK",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : 1245,
+    "y" : 93,
+    "config" : { }
+  }, {
+    "stepOrder" : 45,
+    "actionType" : "WAIT",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 46,
+    "actionType" : "CLICK",
+    "targetType" : "TEXT",
+    "targetValue" : "Sign in Manually",
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 47,
+    "actionType" : "WAIT",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 2000,
+    "x" : null,
+    "y" : null,
+    "config" : { }
+  }, {
+    "stepOrder" : 48,
+    "actionType" : "GOTO",
+    "targetType" : "TEXT",
+    "targetValue" : null,
+    "retryCount" : 3,
+    "timeout" : 1000,
+    "x" : null,
+    "y" : null,
+    "config" : {
+      "label" : "enter_email"
+    }
+  } ]
+}

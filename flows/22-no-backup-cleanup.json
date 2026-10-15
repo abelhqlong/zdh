@@ -1,0 +1,828 @@
+{
+  "name": "22",
+  "description": "Shadowrocket选最快节点 → AMG一键新机 → Poshmark邮箱注册",
+  "steps": [
+    {
+      "stepOrder": 1,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 2,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Shadowrocket",
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {
+        "dy": -55
+      }
+    },
+    {
+      "stepOrder": 3,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 3000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 4,
+      "actionType": "CLICK_RANDOM",
+      "targetType": "TEXT",
+      "targetValue": "MIYA-",
+      "retryCount": 5,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 5,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 2000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 6,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "主屏幕",
+      "retryCount": 5,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 7,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 8,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "AMG",
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 9,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 3000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 9.5,
+      "actionType": "IF_TEXT",
+      "targetType": "TEXT",
+      "targetValue": "通过IP获取位置失败",
+      "retryCount": 1,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {
+        "expect": "present",
+        "gotoOnTrue": "amg_ip_error_retry"
+      }
+    },
+    {
+      "stepOrder": 10,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "一键新机",
+      "retryCount": 12,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 11,
+      "actionType": "LABEL",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {
+        "label": "amg_retry"
+      }
+    },
+    {
+      "stepOrder": 12,
+      "actionType": "IF_TEXT",
+      "targetType": "TEXT",
+      "targetValue": "通过IP获取位置失败",
+      "retryCount": 1,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {
+        "expect": "present",
+        "gotoOnTrue": "dismiss_ip_error"
+      }
+    },
+    {
+      "stepOrder": 13,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 2000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 14,
+      "actionType": "CHECK",
+      "targetType": "TEXT",
+      "targetValue": "正在操作",
+      "retryCount": 11,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {
+        "expect": "present"
+      }
+    },
+    {
+      "stepOrder": 15,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 16,
+      "actionType": "CHECK",
+      "targetType": "TEXT",
+      "targetValue": "设备信息",
+      "retryCount": 10,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {
+        "expect": "present"
+      }
+    },
+    {
+      "stepOrder": 17,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "主屏幕",
+      "retryCount": 5,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 18,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 19,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 20,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Poshmark",
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {
+        "dy": -55
+      }
+    },
+    {
+      "stepOrder": 21,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 8000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 22,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Sign up with Email",
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 23,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 3000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 24,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "First name",
+      "retryCount": 5,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 25,
+      "actionType": "INPUT",
+      "targetType": "TEXT",
+      "targetValue": "${FIRST_NAME}",
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 26,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 800,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 27,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Last name",
+      "retryCount": 5,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 28,
+      "actionType": "INPUT",
+      "targetType": "TEXT",
+      "targetValue": "${LAST_NAME}",
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 29,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 800,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 30,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Email Address",
+      "retryCount": 5,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 31,
+      "actionType": "INPUT",
+      "targetType": "TEXT",
+      "targetValue": "${EMAIL}",
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 32,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 800,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 33,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Continue",
+      "retryCount": 5,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 34,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 4000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 35,
+      "actionType": "IF_TEXT",
+      "targetType": "TEXT",
+      "targetValue": "already tied",
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {
+        "expect": "present",
+        "gotoOnTrue": "err_email_exists"
+      }
+    },
+    {
+      "stepOrder": 36,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": 1400,
+      "y": 302,
+      "config": {}
+    },
+    {
+      "stepOrder": 37,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 1500,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 38,
+      "actionType": "LABEL",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {
+        "label": "clr_username"
+      }
+    },
+    {
+      "stepOrder": 39,
+      "actionType": "KEY",
+      "targetType": "TEXT",
+      "targetValue": "BACKSPACE",
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 40,
+      "actionType": "REPEAT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {
+        "times": 15,
+        "goto": "clr_username"
+      }
+    },
+    {
+      "stepOrder": 41,
+      "actionType": "INPUT",
+      "targetType": "TEXT",
+      "targetValue": "${USERNAME}",
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 42,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 800,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 43,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Password",
+      "retryCount": 5,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 44,
+      "actionType": "INPUT",
+      "targetType": "TEXT",
+      "targetValue": "${PASSWORD}",
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 45,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 800,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 46,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Continue",
+      "retryCount": 5,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 47,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 6000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 48,
+      "actionType": "CHECK",
+      "targetType": "TEXT",
+      "targetValue": "Creating your account...",
+      "retryCount": 10,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {
+        "expect": "present",
+        "keywords": [
+          "Creating your account...",
+          "Add phone number",
+          "Save Password"
+        ]
+      }
+    },
+    {
+      "stepOrder": 48,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 65,
+      "actionType": "LABEL",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {
+        "label": "dismiss_ip_error"
+      }
+    },
+    {
+      "stepOrder": 66,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "知道了",
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 67,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 68,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "一键新机",
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 69,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 2000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 70,
+      "actionType": "GOTO",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {
+        "label": "amg_retry"
+      }
+    },
+    {
+      "stepOrder": 71,
+      "actionType": "LABEL",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {
+        "label": "err_email_exists"
+      }
+    },
+    {
+      "stepOrder": 72,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Dismiss",
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 73,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "___EMAIL_ALREADY_EXISTS_OR_INVALID___",
+      "retryCount": 1,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 74,
+      "actionType": "LABEL",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {
+        "label": "amg_ip_error_retry"
+      }
+    },
+    {
+      "stepOrder": 75,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "知道了",
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 76,
+      "actionType": "HOME",
+      "targetType": null,
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 77,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 2000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 78,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "Shadowrocket",
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {
+        "dy": -55
+      }
+    },
+    {
+      "stepOrder": 79,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 2000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 80,
+      "actionType": "CLICK_RANDOM",
+      "targetType": "TEXT",
+      "targetValue": "MIYA-",
+      "retryCount": 5,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 81,
+      "actionType": "HOME",
+      "targetType": null,
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 82,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 2000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 83,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "AMG",
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 84,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 3000,
+      "x": null,
+      "y": null,
+      "config": {}
+    },
+    {
+      "stepOrder": 85,
+      "actionType": "CLICK",
+      "targetType": "TEXT",
+      "targetValue": "一键新机",
+      "retryCount": 12,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {}
+    }
+  ]
+}

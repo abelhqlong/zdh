@@ -1,0 +1,34 @@
+# 编译输出
+target/
+dist/
+
+# IDE
+.idea/
+*.iml
+
+# 上传的文件
+uploads/
+
+# 日志和临时文件
+*.log
+*.txt
+*.png
+*.jpg
+*.jpeg
+!pom.xml
+!flows/*.json
+baidu_token.json
+ocr_screen.json
+run-22-report.json
+
+# Python 调试脚本
+*.py
+*.pyc
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 临时文件
+*~
+*.bak
