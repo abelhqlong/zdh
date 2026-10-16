@@ -41,7 +41,7 @@
       "stepOrder": 4,
       "actionType": "CLICK_RANDOM",
       "targetType": "TEXT",
-      "targetValue": "MIYA-",
+      "targetValue": "US-",
       "retryCount": 5,
       "timeout": 1000,
       "x": null,

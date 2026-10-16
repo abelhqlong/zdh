@@ -7,6 +7,8 @@ import com.patent.disclosure.workflow.WorkflowEngine;
 import com.patent.disclosure.workflow.WorkflowReport;
 import com.patent.disclosure.workflow.StepResult;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -173,6 +175,15 @@ public class BatchRegisterService {
                 }
             }
 
+            // 点主屏幕回桌面
+            try {
+                java.awt.Robot robot = new java.awt.Robot();
+                robot.mouseMove(1587, 1016);
+                robot.mousePress(java.awt.event.InputEvent.BUTTON1_DOWN_MASK);
+                robot.mouseRelease(java.awt.event.InputEvent.BUTTON1_DOWN_MASK);
+                Thread.sleep(1000);
+            } catch (Exception ignored) {}
+
             // 检查停止标志（行间间隔前）
             if (stopFlag.get()) {
                 progressListener.onLog("\n[STOPPED] User stopped the batch.");
@@ -180,7 +191,7 @@ public class BatchRegisterService {
             }
 
             // 行间间隔
-            try { Thread.sleep(5000); } catch (InterruptedException ignored) {}
+            try { Thread.sleep(4000); } catch (InterruptedException ignored) {}
         }
 
         progressListener.onLog("\n===== SUMMARY =====");
@@ -244,7 +255,7 @@ public class BatchRegisterService {
     /** 读 Excel，返回数据行列表 */
     private List<RowData> readExcel(File file) throws IOException {
         List<RowData> result = new ArrayList<>();
-        try (Workbook wb = new XSSFWorkbook(new FileInputStream(file))) {
+        try (Workbook wb = WorkbookFactory.create(new FileInputStream(file))) {
             Sheet sheet = wb.getSheetAt(0);
             // 找表头行（含"邮箱"字样）
             int headerRowIdx = -1;
@@ -285,7 +296,7 @@ public class BatchRegisterService {
 
     /** 更新某一行的状态列 */
     private void updateRowStatus(File file, int rowIndex, String status) {
-        try (Workbook wb = new XSSFWorkbook(new FileInputStream(file))) {
+        try (Workbook wb = WorkbookFactory.create(new FileInputStream(file))) {
             Sheet sheet = wb.getSheetAt(0);
             Row row = sheet.getRow(rowIndex);
             if (row == null) row = sheet.createRow(rowIndex);
@@ -303,7 +314,7 @@ public class BatchRegisterService {
     /** 同时写状态列和备注列 */
     private void updateRowResult(File file, int rowIndex, String status, String note) {
         System.out.println("[DEBUG] updateRowResult: file=" + file.getAbsolutePath() + ", rowIndex=" + rowIndex + ", status=" + status);
-        try (Workbook wb = new XSSFWorkbook(new FileInputStream(file))) {
+        try (Workbook wb = WorkbookFactory.create(new FileInputStream(file))) {
             Sheet sheet = wb.getSheetAt(0);
             Row row = sheet.getRow(rowIndex);
             if (row == null) row = sheet.createRow(rowIndex);

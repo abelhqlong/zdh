@@ -194,7 +194,7 @@ public class WorkflowController {
                                                 @RequestParam("row") int row) {
         try {
             java.io.File file = new java.io.File(excelPath);
-            org.apache.poi.ss.usermodel.Workbook wb = new org.apache.poi.xssf.usermodel.XSSFWorkbook(new java.io.FileInputStream(file));
+            org.apache.poi.ss.usermodel.Workbook wb = org.apache.poi.ss.usermodel.WorkbookFactory.create(new java.io.FileInputStream(file));
             org.apache.poi.ss.usermodel.Sheet sheet = wb.getSheetAt(0);
             org.apache.poi.ss.usermodel.Row rowObj = sheet.getRow(row);
             if (rowObj == null) rowObj = sheet.createRow(row);
@@ -288,7 +288,7 @@ public class WorkflowController {
         }
         try {
             java.io.File file = new java.io.File(excelPath);
-            org.apache.poi.ss.usermodel.Workbook wb = new org.apache.poi.xssf.usermodel.XSSFWorkbook(new java.io.FileInputStream(file));
+            org.apache.poi.ss.usermodel.Workbook wb = org.apache.poi.ss.usermodel.WorkbookFactory.create(new java.io.FileInputStream(file));
             org.apache.poi.ss.usermodel.Sheet sheet = wb.getSheetAt(0);
 
             // 找表头行

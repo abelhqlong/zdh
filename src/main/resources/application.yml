@@ -13,11 +13,18 @@ spring:
 # Windows: 安装 Tesseract 后，将 command 改成实际 tesseract.exe 路径。
 automation:
   # 默认镜像（投屏）识别区域，后端启动时加载；运行时仍可通过 /api/mirror/region 临时修改
+  # 手机投屏配置（当前使用）
   mirror:
-    x: 1175
-    y: 59
-    width: 711
-    height: 1021
+    x: 1480
+    y: 0
+    width: 415
+    height: 1080
+  # 平板iPad投屏配置（备份，需要时取消注释即可）
+  # mirror:
+  #   x: 1175
+  #   y: 59
+  #   width: 711
+  #   height: 1021
   crypto:
     master-key: change-me-to-a-strong-local-key
   ocr:

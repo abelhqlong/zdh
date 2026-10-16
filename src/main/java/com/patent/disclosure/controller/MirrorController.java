@@ -75,6 +75,20 @@ public class MirrorController {
         return Map.of("success", true, "name", name);
     }
 
+    // 一键切换到平板iPad的识别区域
+    @GetMapping("/tablet")
+    public Map<String, Integer> switchToTablet() {
+        regionService.setRegion(1175, 59, 711, 1021);
+        return getRegion();
+    }
+
+    // 一键切换到手机的识别区域
+    @GetMapping("/phone")
+    public Map<String, Integer> switchToPhone() {
+        regionService.setRegion(1505, 0, 415, 1080);
+        return getRegion();
+    }
+
     public record RegionRequest(int x, int y, int width, int height) {}
     public record NamedRegionRequest(String name, int x, int y, int width, int height) {}
 }

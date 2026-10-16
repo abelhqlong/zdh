@@ -14,8 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
  *   - 默认区域（"default"）兼容旧 API：getRegion()/setRegion()/clear()；
  *   - 步骤可用 config.region=区域名 指定用哪个区域截图识别（如手机画面、验证码弹窗、桌面区域）。
  *
- * 启动时从 application.yml 的 automation.mirror.* 读取默认区域，
- * 这样后端重启后区域坐标不丢失；运行时仍可通过 /api/mirror/region 临时修改。
+ * 启动时从 application.yml 的 automation.mirror.* 读取固定投屏识别区域。
  */
 @Service
 public class MirrorRegionService {
