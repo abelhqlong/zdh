@@ -3,6 +3,7 @@ package com.patent.disclosure.workflow.handler;
 import com.patent.disclosure.automation.MirrorRegionService;
 import com.patent.disclosure.automation.MouseController;
 import com.patent.disclosure.automation.ScreenCapture;
+import com.patent.disclosure.ocr.OcrCacheService;
 import com.patent.disclosure.ocr.OcrElement;
 import com.patent.disclosure.ocr.OcrMatcher;
 import com.patent.disclosure.ocr.OcrResult;
@@ -29,11 +30,14 @@ import java.util.Optional;
 public class ClickHandler extends BaseOcrHandler implements StepHandler {
 
     protected final MouseController mouse;
+    protected final OcrCacheService ocrCache;
 
     public ClickHandler(OcrService ocr, ScreenCapture screenCapture,
-                        MirrorRegionService regionService, MouseController mouse) {
+                        MirrorRegionService regionService, MouseController mouse,
+                        OcrCacheService ocrCache) {
         super(ocr, screenCapture, regionService);
         this.mouse = mouse;
+        this.ocrCache = ocrCache;
     }
 
     @Override
@@ -59,6 +63,24 @@ public class ClickHandler extends BaseOcrHandler implements StepHandler {
                 return StepResult.fail(step.stepOrder(), step.actionType(), target,
                         "CLICK 需要 x/y 坐标或目标文字", System.currentTimeMillis() - start);
             }
+
+            // 先查缓存有没有坐标（如果配置了 noCache=true，就跳过缓存）
+            Object noCacheObj = step.config() == null ? null : step.config().get("noCache");
+            boolean noCache = noCacheObj instanceof Boolean b ? b : "true".equals(String.valueOf(noCacheObj));
+            String cacheKey = "click_" + target;
+            if (!noCache) {
+                int[] cachedPos = ocrCache.get(cacheKey);
+                if (cachedPos != null) {
+                    int cx = cachedPos[0] + dx;
+                    int cy = cachedPos[1] + dy;
+                    doClick(cx, cy);
+                    // 缓存模式下点击很快，加个等待时间让页面有时间加载响应（模拟原来 OCR 的耗时）
+                    sleep(3000);
+                    return StepResult.ok(step.stepOrder(), step.actionType(), target,
+                            cx, cy, System.currentTimeMillis() - start);
+                }
+            }
+
             String lastOcr = null;
             for (int i = 0; i <= retries; i++) {
                 OcrResult result = recognizeRegion(step);
@@ -68,6 +90,10 @@ public class ClickHandler extends BaseOcrHandler implements StepHandler {
                     OcrElement e = m.get();
                     int cx = e.centerScreenX() + dx, cy = e.centerScreenY() + dy;
                     doClick(cx, cy);
+                    // 把坐标存进缓存，下次直接用（noCache 的时候不存）
+                    if (!noCache) {
+                        ocrCache.put(cacheKey, e.centerScreenX(), e.centerScreenY());
+                    }
                     return StepResult.ok(step.stepOrder(), step.actionType(), target,
                             cx, cy, System.currentTimeMillis() - start);
                 }

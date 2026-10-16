@@ -107,14 +107,27 @@
       "stepOrder": 9.5,
       "actionType": "IF_TEXT",
       "targetType": "TEXT",
-      "targetValue": "通过IP获取位置失败",
+      "targetValue": "提示",
       "retryCount": 2,
       "timeout": 1000,
       "x": null,
       "y": null,
       "config": {
-        "expect": "present",
-        "gotoOnTrue": "amg_ip_error_retry"
+        "expect": "absent",
+        "gotoOnFalse": "amg_ip_error_retry"
+      }
+    },
+    {
+      "stepOrder": 9.8,
+      "actionType": "LABEL",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {
+        "label": "click_one_click_new"
       }
     },
     {
@@ -156,28 +169,39 @@
       "stepOrder": 12,
       "actionType": "IF_TEXT",
       "targetType": "TEXT",
-      "targetValue": "通过IP获取位置失败",
+      "targetValue": "提示",
       "retryCount": 2,
       "timeout": 1000,
       "x": null,
       "y": null,
       "config": {
-        "expect": "present",
-        "gotoOnTrue": "dismiss_ip_error"
+        "expect": "absent",
+        "gotoOnFalse": "dismiss_ip_error"
       }
     },
     {
-      "stepOrder": 14,
-      "actionType": "CHECK",
+      "stepOrder": 13.5,
+      "actionType": "LABEL",
       "targetType": "TEXT",
-      "targetValue": "正在操作",
-      "retryCount": 11,
+      "targetValue": null,
+      "retryCount": 3,
       "timeout": 1000,
       "x": null,
       "y": null,
       "config": {
-        "expect": "present"
+        "label": "check_operating"
       }
+    },
+    {
+      "stepOrder": 14,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 3000,
+      "x": null,
+      "y": null,
+      "config": {}
     },
     {
       "stepOrder": 15,
@@ -192,16 +216,14 @@
     },
     {
       "stepOrder": 16,
-      "actionType": "CHECK",
+      "actionType": "WAIT",
       "targetType": "TEXT",
-      "targetValue": "设备信息",
-      "retryCount": 10,
-      "timeout": 1000,
+      "targetValue": null,
+      "retryCount": 3,
+      "timeout": 4000,
       "x": null,
       "y": null,
-      "config": {
-        "expect": "present"
-      }
+      "config": {}
     },
     {
       "stepOrder": 17,
@@ -259,8 +281,8 @@
       "x": null,
       "y": null,
       "config": {
-        "minMs": 3000,
-        "maxMs": 5000
+        "minMs": 6000,
+        "maxMs": 8000
       }
     },
     {
@@ -268,11 +290,14 @@
       "actionType": "CLICK",
       "targetType": "TEXT",
       "targetValue": "Sign up with Email",
-      "retryCount": 3,
-      "timeout": 1000,
+      "retryCount": 2,
+      "timeout": 1500,
       "x": null,
       "y": null,
-      "config": {}
+      "config": {
+        "label": "click_signup_email",
+        "noCache": true
+      }
     },
     {
       "stepOrder": 23,
@@ -428,8 +453,8 @@
       "x": null,
       "y": null,
       "config": {
-        "expect": "present",
-        "gotoOnTrue": "err_email_exists"
+        "expect": "absent",
+        "gotoOnFalse": "err_email_exists"
       }
     },
     {
@@ -542,10 +567,13 @@
       "targetType": "TEXT",
       "targetValue": null,
       "retryCount": 3,
-      "timeout": 800,
+      "timeout": 1000,
       "x": null,
       "y": null,
-      "config": {}
+      "config": {
+        "minMs": 1000,
+        "maxMs": 3000
+      }
     },
     {
       "stepOrder": 46,
@@ -564,7 +592,7 @@
       "targetType": "TEXT",
       "targetValue": null,
       "retryCount": 3,
-      "timeout": 6000,
+      "timeout": 8000,
       "x": null,
       "y": null,
       "config": {}
@@ -573,22 +601,20 @@
       "stepOrder": 48,
       "actionType": "CHECK",
       "targetType": "TEXT",
-      "targetValue": "Creating your account...",
-      "retryCount": 10,
-      "timeout": 1000,
+      "targetValue": "Add phone number",
+      "retryCount": 1,
+      "timeout": 2000,
       "x": null,
       "y": null,
       "config": {
         "expect": "present",
         "keywords": [
-          "Creating your account...",
-          "Add phone number",
-          "Save Password"
+          "Add phone number"
         ]
       }
     },
     {
-      "stepOrder": 48,
+      "stepOrder": 49,
       "actionType": "WAIT",
       "targetType": "TEXT",
       "targetValue": null,
@@ -597,6 +623,19 @@
       "x": null,
       "y": null,
       "config": {}
+    },
+    {
+      "stepOrder": 49.5,
+      "actionType": "GOTO",
+      "targetType": "TEXT",
+      "targetValue": null,
+      "retryCount": 1,
+      "timeout": 1000,
+      "x": null,
+      "y": null,
+      "config": {
+        "label": "flow_end"
+      }
     },
     {
       "stepOrder": 65,
@@ -623,7 +662,7 @@
       "config": {}
     },
     {
-      "stepOrder": 67,
+      "stepOrder": 66.5,
       "actionType": "WAIT",
       "targetType": "TEXT",
       "targetValue": null,
@@ -634,15 +673,17 @@
       "config": {}
     },
     {
-      "stepOrder": 68,
-      "actionType": "CLICK",
+      "stepOrder": 66.6,
+      "actionType": "GOTO",
       "targetType": "TEXT",
-      "targetValue": "一键新机",
+      "targetValue": null,
       "retryCount": 3,
       "timeout": 1000,
       "x": null,
       "y": null,
-      "config": {}
+      "config": {
+        "label": "check_operating"
+      }
     },
     {
       "stepOrder": 69,
@@ -728,9 +769,9 @@
       "config": {}
     },
     {
-      "stepOrder": 76,
-      "actionType": "HOME",
-      "targetType": null,
+      "stepOrder": 75.5,
+      "actionType": "WAIT",
+      "targetType": "TEXT",
       "targetValue": null,
       "retryCount": 3,
       "timeout": 1000,
@@ -739,105 +780,30 @@
       "config": {}
     },
     {
-      "stepOrder": 77,
-      "actionType": "WAIT",
+      "stepOrder": 75.6,
+      "actionType": "GOTO",
       "targetType": "TEXT",
       "targetValue": null,
-      "retryCount": 3,
-      "timeout": 2000,
-      "x": null,
-      "y": null,
-      "config": {}
-    },
-    {
-      "stepOrder": 78,
-      "actionType": "CLICK",
-      "targetType": "TEXT",
-      "targetValue": "Shadowrocket",
       "retryCount": 3,
       "timeout": 1000,
       "x": null,
       "y": null,
       "config": {
-        "dy": -55
+        "label": "click_one_click_new"
       }
     },
     {
-      "stepOrder": 79,
-      "actionType": "WAIT",
+      "stepOrder": 999,
+      "actionType": "LABEL",
       "targetType": "TEXT",
       "targetValue": null,
-      "retryCount": 3,
-      "timeout": 2000,
-      "x": null,
-      "y": null,
-      "config": {}
-    },
-    {
-      "stepOrder": 80,
-      "actionType": "CLICK_RANDOM",
-      "targetType": "TEXT",
-      "targetValue": "MIYA-",
-      "retryCount": 5,
+      "retryCount": 1,
       "timeout": 1000,
       "x": null,
       "y": null,
-      "config": {}
-    },
-    {
-      "stepOrder": 81,
-      "actionType": "HOME",
-      "targetType": null,
-      "targetValue": null,
-      "retryCount": 3,
-      "timeout": 1000,
-      "x": null,
-      "y": null,
-      "config": {}
-    },
-    {
-      "stepOrder": 82,
-      "actionType": "WAIT",
-      "targetType": "TEXT",
-      "targetValue": null,
-      "retryCount": 3,
-      "timeout": 2000,
-      "x": null,
-      "y": null,
-      "config": {}
-    },
-    {
-      "stepOrder": 83,
-      "actionType": "CLICK",
-      "targetType": "TEXT",
-      "targetValue": "AMG",
-      "retryCount": 3,
-      "timeout": 1000,
-      "x": null,
-      "y": null,
-      "config": {}
-    },
-    {
-      "stepOrder": 84,
-      "actionType": "WAIT",
-      "targetType": "TEXT",
-      "targetValue": null,
-      "retryCount": 3,
-      "timeout": 3000,
-      "x": null,
-      "y": null,
-      "config": {}
-    },
-    {
-      "stepOrder": 85,
-      "actionType": "CLICK",
-      "targetType": "TEXT",
-      "targetValue": "一键新机",
-      "retryCount": 12,
-      "timeout": 1000,
-      "x": null,
-      "y": null,
-      "config": {}
+      "config": {
+        "label": "flow_end"
+      }
     }
   ]
 }

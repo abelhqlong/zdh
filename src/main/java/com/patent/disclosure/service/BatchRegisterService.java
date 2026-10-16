@@ -143,6 +143,8 @@ public class BatchRegisterService {
             String failReason = "";
             try {
                 progressListener.onLog("  [RUN] Starting flow...");
+                // 重置 OCR 调用计数
+                com.patent.disclosure.workflow.handler.BaseOcrHandler.resetOcrCallCount();
                 WorkflowReport report = engine.execute(customFlow.get(flow), vars);
                 ok = judgeSuccess(report);
                 if (!ok) {
@@ -154,12 +156,15 @@ public class BatchRegisterService {
                 progressListener.onLog("  [ERROR] Exception: " + e.getMessage());
             }
 
+            // 输出本次流程的 OCR 调用次数
+            int ocrCount = com.patent.disclosure.workflow.handler.BaseOcrHandler.getOcrCallCount();
+
             if (ok) {
-                progressListener.onLog("  [OK] Registration success");
+                progressListener.onLog("  [OK] Registration success | OCR 调用: " + ocrCount + " 次");
                 updateRowResult(file, row.excelRowIndex, "成功", "");
                 okCount++;
             } else {
-                progressListener.onLog("  [FAIL] " + failReason);
+                progressListener.onLog("  [FAIL] " + failReason + " | OCR 调用: " + ocrCount + " 次");
                 updateRowResult(file, row.excelRowIndex, "失败", failReason);
                 failCount++;
                 if (!continueOnError) {
@@ -184,14 +189,14 @@ public class BatchRegisterService {
         progressListener.onLog("[FILE] Updated: " + excelPath);
     }
 
-    /** 判定注册成功：找到 CHECK "Creating your account..." 且 success=true */
+    /** 判定注册成功：找到 CHECK "Add phone number" 且 success=true */
     private boolean judgeSuccess(WorkflowReport report) {
         if (report == null || report.steps() == null) return false;
         for (StepResult s : report.steps()) {
             if ("CHECK".equals(s.actionType())) {
                 String tv = s.targetValue() == null ? "" : s.targetValue();
                 String msg = s.message() == null ? "" : s.message();
-                if (tv.contains("Creating your account") || msg.contains("Creating your account")) {
+                if (tv.contains("Add phone number") || msg.contains("Add phone number")) {
                     return s.success();
                 }
             }
@@ -199,19 +204,31 @@ public class BatchRegisterService {
         return false;
     }
 
-    /** 提取失败原因 */
+    /** 提取失败原因（简化版，只保留最关键的问题） */
     private String extractFailReason(WorkflowReport report) {
-        if (report == null || report.steps() == null) return "未知失败";
-        StringBuilder sb = new StringBuilder();
+        if (report == null || report.steps() == null) return "未知错误";
         for (StepResult s : report.steps()) {
             if (!s.success()) {
                 String msg = s.message() == null ? s.actionType() : s.message();
-                if (sb.length() > 0) sb.append(" | ");
-                sb.append(msg);
-                if (sb.length() > 300) break;
+                // 简化常见错误信息
+                if (msg.contains("未找到可点击文字")) {
+                    return "未找到按钮: " + msg.replace("未找到可点击文字: ", "");
+                }
+                if (msg.contains("IF_TEXT 条件未满足")) {
+                    if (msg.contains("already tied")) return "邮箱已被注册";
+                    if (msg.contains("提示")) return "弹窗处理失败";
+                    return "页面检测失败";
+                }
+                if (msg.contains("检查未通过")) {
+                    return "注册结果确认失败";
+                }
+                if (msg.length() > 50) {
+                    return msg.substring(0, 50) + "...";
+                }
+                return msg;
             }
         }
-        return sb.length() > 0 ? sb.toString() : "未知失败";
+        return "未知错误";
     }
 
     /** 回主屏 */

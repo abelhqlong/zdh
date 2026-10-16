@@ -22,7 +22,12 @@ automation:
     master-key: change-me-to-a-strong-local-key
   ocr:
     # OCR 引擎：tesseract（本机）| baidu（百度智能云在线）| paddleocr（本地 PaddleOCR 服务）
-    engine: paddleocr
+    engine: baidu
+    # OCR 坐标缓存：第一次跑记录坐标，后面直接用，减少 OCR 调用次数
+    cache-enabled: true
+    # 强制刷新缓存：第一次跑的时候设为 true，跑完改成 false
+    cache-refresh: false
+    cache-file: cache/ocr-coordinates.json
     # 其他电脑安装路径不同时，可用 --automation.ocr.tesseract-command="D:\xxx\tesseract.exe" 覆盖
     tesseract-command: 'C:\Program Files\Tesseract-OCR\tesseract.exe'
     language: chi_sim+eng

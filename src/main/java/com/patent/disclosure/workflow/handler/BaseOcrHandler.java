@@ -15,6 +15,17 @@ public abstract class BaseOcrHandler {
     protected final ScreenCapture screenCapture;
     protected final MirrorRegionService regionService;
 
+    /** OCR 调用次数计数器 */
+    private static int ocrCallCount = 0;
+
+    public static int getOcrCallCount() {
+        return ocrCallCount;
+    }
+
+    public static void resetOcrCallCount() {
+        ocrCallCount = 0;
+    }
+
     protected BaseOcrHandler(OcrService ocr,
                              ScreenCapture screenCapture,
                              MirrorRegionService regionService) {
@@ -36,6 +47,7 @@ public abstract class BaseOcrHandler {
 
     protected OcrResult recognizeRegion(String regionName) {
         Rectangle region = regionService.getRegion(regionName);
+        ocrCallCount++; // 统计 OCR 调用次数
         try {
             return ocr.recognize(screenCapture.capture(region), region);
         } catch (Exception e) {
